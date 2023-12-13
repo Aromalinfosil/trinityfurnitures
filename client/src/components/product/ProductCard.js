@@ -37,9 +37,9 @@ const ProductCard = ({ product, id, image, name, price, model_no, description}) 
 			<div class="men-pro-item">
 		  <div class="">
       <center> <figure className="">
-      <a href ={`http://65.1.134.51:3001/product-details/${id}`}>
+      <Link to={`/product-details/${id}`}>
       <img src={`http://65.1.134.51:3001/uploads/${image}`} alt="product-img" />
-      </a>
+      </Link>
       </figure></center> 
       <div class="">
       <div class="">
@@ -58,9 +58,9 @@ const ProductCard = ({ product, id, image, name, price, model_no, description}) 
 				<div class="grid_meta">
         <br></br>
 				<div class="product_price">
-        <h3 className="">
+        {/* <h3 className="">hghh
         <a href={`http://65.1.134.51:3001/product-details/${id}`}style={{ fontSize: '24px',fontFamily:'Roboto, sans-serif' }}></a>
-        </h3>
+      </h3> */}
         <div class='modelm'>         
         <h4 className=""style={{ fontSize: '25px',fontFamily:'Poppins, sans-serif' }}><font color="#09470b">Model No: {model_no}</font></h4>
         <h3 className=""style={{ fontSize: '15px',fontFamily:'Poppins, sans-serif' }}>Dimension: {description}</h3>

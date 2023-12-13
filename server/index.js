@@ -43,15 +43,15 @@ const con = mysql.createConnection({
       const phone = req.body.phone;
 
 
-        con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
-       (err, result) => {
-       if(result){
-       res.send(result);
-       }else{
-       res.send({message: "ENTER CORRECT ASKED DETAILS!"})
-       }
-       })
-       })
+      con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
+      (err, result) => {
+      if(result){
+      res.send(result);
+      }else{
+      res.send({message: "ENTER CORRECT ASKED DETAILS!"})
+      }
+      })
+      })
 
 
       //Email authentication

@@ -27,7 +27,7 @@ const SearchBar = () => {
   const fetchSearchResults = async (query) => {
     try {
       if (query.trim() !== '') {
-        const response = await axios.get(`/search/product?category=${query}`);
+        const response = await axios.get(`http://65.1.134.51:3001/search/product?category=${query}`);
         setSearchResults(response.data);
       } else {
         setSearchResults([]);

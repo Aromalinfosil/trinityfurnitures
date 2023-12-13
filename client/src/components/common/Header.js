@@ -142,7 +142,7 @@ const Header = () => {
                             </div>
 
                             <div className="cart_action">
-                                <Link to="http://65.1.134.51:3001/cart">
+                                <Link to="/cart">
                                   
 								<AiOutlineShoppingCart />
                                     {
