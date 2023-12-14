@@ -92,6 +92,7 @@ const Header = () => {
 
 	
 	  useEffect(() => {
+<<<<<<< HEAD
 		
 		const UId = Cookies.get('useid');
 	  
@@ -107,6 +108,23 @@ const Header = () => {
 			console.error('Error fetching cart items:', error);
 		  });
 	  }, [[setCartItemCount]]);
+=======
+        const UId = Cookies.get('useid');
+
+        axios
+            .get(`http://65.1.134.51:3001/cart/items?UId=${UId}`)
+            .then((response) => {
+                const cartItems = response.data && response.data.cartItems;
+                if (cartItems) {
+                    setCartItemCount(cartItems.length);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching cart items:', error);
+            });
+    }, [setCartItemCount]);
+
+>>>>>>> e642ea79a58724369ac02206b603cbaf81e93d21
 
 
     return (
