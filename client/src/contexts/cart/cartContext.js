@@ -73,9 +73,9 @@ const CartProvider = ({ children }) => {
     };
 
     return (
-        <cartContext.Provider value={values}>
-            {children}
-        </cartContext.Provider>
+    <cartContext.Provider value={values}>
+    {children}
+    </cartContext.Provider>
     );
 };
 

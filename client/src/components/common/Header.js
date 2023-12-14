@@ -97,7 +97,7 @@ const Header = () => {
 	  
 	
 		axios
-		  .get(`http://65.1.134.51:3001/cart/items?UId=${UId}`)
+		  .get(`/cart/items?UId=${UId}`)
 		  .then((response) => {
 			const cartItems = response.data.cartItems;
 			setCartItemCount(cartItems.length);
@@ -132,26 +132,26 @@ const Header = () => {
       </div>
 		
 
-                        <nav className="nav_actions d-flex justify-content-end d-flex align-items-start nav-sea nav-sea1 nav-sea2  ">
+        <nav className="nav_actions d-flex justify-content-end d-flex align-items-start nav-sea nav-sea1 nav-sea2  ">
 			
-						    <div className="search_action">
-                            <span onClick={() => toggleSearch(true)}>
-                                    <AiOutlineSearch />
-                                </span>
-                                <div className="tooltip">Search</div>
-                            </div>
+		<div className="search_action">
+        <span onClick={() => toggleSearch(true)}>
+        <AiOutlineSearch />
+        </span>
+        <div className="tooltip">Search</div>
+        </div>
 
-                            <div className="cart_action">
-                                <Link to="/cart">
+        <div className="cart_action">
+        <Link to="/cart">
                                   
-								<AiOutlineShoppingCart />
-                                    {
-                                        cartItemCount > 0 && (
-                                            <span className="badge">{cartItemCount}</span>
-                                        )
-                                    }
-                                </Link>
-                                <div className="tooltip">Cart</div>
+		<AiOutlineShoppingCart />
+        {
+        cartItemCount > 0 && (
+        <span className="badge">{cartItemCount}</span>
+        )
+        }
+        </Link>
+        <div className="tooltip">Cart</div>
                             </div>
 
 
@@ -242,6 +242,7 @@ const Header = () => {
 					    </ul>
 						</li>
 						 */}
+						 
 						<li class="nav-item dropdown">
 							
 							<a class="nav-link dropdown-toggle" href="/Service" id="navbarDropdown1"  data-toggle="dropdown" aria-haspopup="true"
