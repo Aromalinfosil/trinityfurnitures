@@ -92,21 +92,21 @@ const Header = () => {
 
 	
 	  useEffect(() => {
-		
-		const UId = Cookies.get('useid');
-	  
-	
-		axios
-		  .get(`/cart/items?UId=${UId}`)
-		  .then((response) => {
-			const cartItems = response.data.cartItems;
-			setCartItemCount(cartItems.length);
-		 
-		  })
-		  .catch((error) => {
-			console.error('Error fetching cart items:', error);
-		  });
-	  }, [[setCartItemCount]]);
+        const UId = Cookies.get('useid');
+
+        axios
+            .get(`http://65.1.134.51:3001/cart/items?UId=${UId}`)
+            .then((response) => {
+                const cartItems = response.data && response.data.cartItems;
+                if (cartItems) {
+                    setCartItemCount(cartItems.length);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching cart items:', error);
+            });
+    }, [setCartItemCount]);
+
 
 
     return (
