@@ -118,7 +118,7 @@ const calculateCartTotal = (items) => {
         <div key={item.cartid} className="cart_item">
           <figure className="cart_item_img">
 
-            <Link to={`/product-details/${item.id}`}>
+            <Link to={`http://65.1.134.51:3001/product-details/${item.id}`}>
               <img src={`http://65.1.134.51:3001/uploads/${item.image}`} alt="product-img" />
             </Link>
 
@@ -128,7 +128,7 @@ const calculateCartTotal = (items) => {
             <div className="cart_item_head">
               <h4 className="cart_item_title">
 
-                <Link to={`/product-details/${item.id}`}>
+                <Link to={`http://65.1.134.51:3001/product-details/${item.id}`}>
                   {item.name} {item.description}
                 </Link>
                 

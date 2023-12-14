@@ -97,7 +97,7 @@ const Header = () => {
 	  
 	
 		axios
-		  .get(`/cart/items?UId=${UId}`)
+		  .get(`http://65.1.134.51:3001/cart/items?UId=${UId}`)
 		  .then((response) => {
 			const cartItems = response.data.cartItems;
 			setCartItemCount(cartItems.length);

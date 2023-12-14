@@ -30,7 +30,7 @@ const AccountForm = () => {
 
    
     const submit = () =>{
-    axios.post(`http://65.1.134.51:3001/register`).then((res)=>{
+    axios.post("http://65.1.134.51:3001/register").then((res)=>{
     console.log()
     })
     .catch((err)=>{
@@ -96,8 +96,7 @@ const AccountForm = () => {
             if (response.data.exists) {
             setEmailExists(true);
             } else {
-            Axios.post(`http://65.1.134.51:3001/register`, {
-           
+            Axios.post("http://65.1.134.51:3001/register", {
             fname: fname,
             lname: lname,
             email: email,
@@ -106,6 +105,7 @@ const AccountForm = () => {
             post : post,
             state: state,
             phone : phone,
+
 
             }).then((response) => {
             if (response.data.message) {

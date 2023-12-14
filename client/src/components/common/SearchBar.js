@@ -50,7 +50,7 @@ const SearchBar = () => {
       if (selectedResult) {
         const { category } = selectedResult;
         toggleSearch(false);
-        navigate(`/${category}`);
+        navigate(`http://65.1.134.51:3001/${category}`);
       }
     }
   }
@@ -81,7 +81,7 @@ const SearchBar = () => {
                   if (selectedResult) {
                     const { id, category } = selectedResult;
                     toggleSearch(false);
-                    navigate(`/${category}`);
+                    navigate(`http://65.1.134.51:3001/${category}`);
                   }
                 }}    
                 disabled={searchResults.length === 0}
@@ -96,7 +96,7 @@ const SearchBar = () => {
       const isActive = index === activeIndex;
       return (
         <Link
-          to={`/${category}`}
+          to={`http://65.1.134.51:3001/${category}`}
           onClick={closeSearch}
           key={id}
           className={isActive ? 'active' : ''}
