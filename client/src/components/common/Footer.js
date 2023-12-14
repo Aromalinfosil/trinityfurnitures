@@ -113,7 +113,7 @@ const Footer = () => {
            
             
          </div>
-      </div>
+         </div>
       <div class="register">
         
       </div>  
@@ -135,47 +135,49 @@ const Footer = () => {
 
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="text-white text-uppercase mb-4" >Our Services</h5>
-            <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="/About"><i class="fa fa-angle-right mr-2"></i>About</a>
-            <a class="text-white mb-2" href="/Service"><i class="fa fa-angle-right mr-2"></i>Service</a>     
-            <a class="text-white mb-2" href="/all-products"><i class="fa fa-angle-right mr-2"></i>Products</a>
-            <a class="text-white mb-2" href="/Contact"><i class="fa fa-angle-right mr-2"></i>Contact US</a>
+                <h5 class="text-white text-uppercase mb-4" >Our Services</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="/About"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white mb-2" href="/Service"><i class="fa fa-angle-right mr-2"></i>Service</a>     
+                    <a class="text-white mb-2" href="/all-products"><i class="fa fa-angle-right mr-2"></i>Products</a>
+                    <a class="text-white mb-2" href="/Contact"><i class="fa fa-angle-right mr-2"></i>Contact US</a>
                   
                     
-            </div>
+                </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="text-white text-uppercase mb-4">Support</h5>
-            <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>        
-            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Contact US</a>
-                   
+                <h5 class="text-white text-uppercase mb-4">Support</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="/Privacy"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
+              
+                    <a class="text-white mb-2" href="/Contact"><i class="fa fa-angle-right mr-2"></i>Contact US</a>
+                
                   
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" >Contact Us</h5>
-                <p><font color="#fff"><i class="fa fa-map-marker-alt mr-2"></i>ABN 47620213283
-Address : 50, Manderston Ave, Derrimut, VIC, 3026</font></p>
-                <p><font color="#fff"><i class="fa fa-phone-alt mr-2"></i>########</font></p>
-                <p><font color="#fff"><i class="fa fa-envelope mr-2"></i>sales@trinityfurnitures.com.au</font></p>
-               
+                <p><font color="#fff"><i class="fa fa-map-marker-alt mr-2"></i>32/82 Makland Dr Derrimut</font></p>
+                <a href="tel:+61748518216">
+
+                <p><font color="#fff"><i class="fa fa-phone-alt mr-2"></i>+61748518216</font></p></a>
+                <p><font color="#fff"><i class="fa fa-envelope mr-2"></i>info@trinityfurniture.com.au</font></p>
+                <p><font color="#fff"><i class="fa-solid fa-earth-oceania mr-2"></i>WWW.trinityfurniture.com.au</font></p>
                 <div class="w-100">
                    
                 </div>
             </div>
         </div>
   
-       <div class="" >
+    <div class="" >
         <div class="row">
-        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white-50">Copyright &copy; 2023 <a href="#">Trinity Furnitures </a>
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://www.infosiltechnolabs.com/"> Infosil Technolabs Pvt Ltd</a>
-                </p>
+                {/* <p class="m-0 text-white-50">Designed by <a href="https://www.infosiltechnolabs.com/"> Infosil Technolabs Pvt Ltd</a>
+                </p> */}
             </div>
         </div>
     </div>  </div>

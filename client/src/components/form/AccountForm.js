@@ -84,7 +84,6 @@ const AccountForm = () => {
     }
 
     
-<<<<<<< HEAD
             const register = (e) => {  
             e.preventDefault();
 
@@ -110,32 +109,20 @@ const AccountForm = () => {
 
             }).then((response) => {
             if (response.data.message) {
-=======
-    const register = (e) => {
-      e.preventDefault();
-      Axios.post(`http://65.1.134.51:3001/register`, {
-        fname: fname,
-        lname: lname,
-        email: email,
-        password: password,
-        address: address,
-        post: post,
-        state: state,
-        phone: phone,
-      })
-        .then((response) => {
-          if (response.data.message) {
->>>>>>> e642ea79a58724369ac02206b603cbaf81e93d21
             setRegisterStatus(response.data.message);
-          } else {
+            } else {
             setRegisterStatus("ACCOUNT CREATED SUCCESSFULLY");
             window.location.href = "/";
-          }
-        })
-        .catch((error) => {
-          console.error("Error registering:", error);
-        });
-    };
+            }
+            }).catch((error) => {
+            console.error("Error registering:", error);
+            });
+            }
+            }).catch((error) => {
+            console.error("Error checking email:", error);
+            });
+            };
+      
 
 
 
@@ -204,8 +191,8 @@ const AccountForm = () => {
  
         <div className="form-control gp">  
         <label class="intxty">Enter your Email</label> &nbsp; &nbsp; &nbsp;
-        <input className="" type="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
-       
+        <input className=""  type="email"   name="email" onChange={(e) =>{setEmail(e.target.value)}}  required />
+        {emailExists && <p style={{ color: 'red' }}>This Email id is already exist!</p>}
         </div>
 
 
