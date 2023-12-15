@@ -55,13 +55,13 @@ Address : 50, Manderston Ave, Derrimut, VIC, 3026</p></center>
         <div class="col-sm-4">
 <center><h1><i class="fa-solid fa-envelope"></i></h1></center>
 <center><h3>Have any Question?</h3></center>
-<center><p>Email :<a href='mailto:sales@trinityfurnitures.com'> sales@trinityfurnitures.com.au</a></p></center>
+<center><p>Email :<a href='info@trinityfurniture.com.au'> info@trinityfurniture.com.au</a></p></center>
         </div>
         <div class="col-sm-4">
 
 <center><h1><i class="fa-solid fa-phone"></i></h1></center>
 <center><h3>Phone Number</h3></center>
-<center><p>(123)456-789-10</p></center>
+<center><p>+61748518216</p></center>
         </div>
     </div>
 </div>

@@ -30,15 +30,13 @@ const AccountForm = () => {
 
    
     const submit = () =>{
-    axios.post("http://65.1.134.51:3001/register").then((res)=>{
+    axios.post("/register").then((res)=>{
     console.log()
     })
     .catch((err)=>{
     console.log(err)
     })
     }
-
-
 
     const login = (e) => {
       e.preventDefault();
@@ -87,16 +85,12 @@ const AccountForm = () => {
             const register = (e) => {  
             e.preventDefault();
 
-            // if (!fname || !lname || !email || !address || !phone || !password) {
-            // setRegisterStatus('Please fill out all fields.');
-            // return;
-            // }
-          
+
             Axios.get(`http://65.1.134.51:3001/check-email?email=${email}`).then((response) => {
             if (response.data.exists) {
             setEmailExists(true);
             } else {
-            Axios.post("http://65.1.134.51:3001/register", {
+            Axios.post("/register", {
             fname: fname,
             lname: lname,
             email: email,
@@ -192,7 +186,7 @@ const AccountForm = () => {
         <div className="form-control gp">  
         <label class="intxty">Enter your Email</label> &nbsp; &nbsp; &nbsp;
         <input className=""  type="email"   name="email" onChange={(e) =>{setEmail(e.target.value)}}  required />
-        {emailExists && <p style={{ color: 'red' }}>This Email id is already exist!</p>}
+        {/* {emailExists && <p style={{ color: 'red' }}>This Email id is already exist!</p>} */}
         </div>
 
 

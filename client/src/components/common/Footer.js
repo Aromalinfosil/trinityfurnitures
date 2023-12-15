@@ -162,7 +162,7 @@ const Footer = () => {
 
                 <p><font color="#fff"><i class="fa fa-phone-alt mr-2"></i>+61748518216</font></p></a>
                 <p><font color="#fff"><i class="fa fa-envelope mr-2"></i>info@trinityfurniture.com.au</font></p>
-                <p><font color="#fff"><i class="fa-solid fa-earth-oceania mr-2"></i>WWW.trinityfurniture.com.au</font></p>
+                <p><font color="#fff"><i class="fa-solid fa-earth-oceania mr-2"></i>www.trinityfurniture.com.au</font></p>
                 <div class="w-100">
                    
                 </div>
@@ -186,3 +186,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

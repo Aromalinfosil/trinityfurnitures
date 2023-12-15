@@ -29,7 +29,7 @@ const FilterBarOptions = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("/filter")
+        fetch("http://65.1.134.51:3001/filter")
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");
@@ -50,7 +50,7 @@ const FilterBarOptions = () => {
     setCheckedItems(updatedCheckedItems);
 
     if (event.target.checked) {
-      navigate(`http://65.1.134.51:3001/category/${category}`);
+      navigate(`/category/${category}`);
     }
   };
 

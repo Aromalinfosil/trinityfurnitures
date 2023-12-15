@@ -30,7 +30,7 @@ const handleProductSubmit = async (e) => {
     formData.append('description', description);
     formData.append('model_no',model_no);
 
-    await axios.post('/product', formData);
+    await axios.post('http://65.1.134.51:3001/product', formData);
 
     setProductStatus('Product added successfully');
     window.location.href = "/product";

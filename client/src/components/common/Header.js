@@ -409,6 +409,10 @@ const Header = () => {
 					<li>
 					<a href="/Corner Rack">	<font color="black">Corner Rack</font></a>
 						</li>
+
+						<li>
+					<a href="/TV Unit">	<font color="black">TV Unit</font></a>
+						</li>
 											
 						</ul>
 
@@ -553,7 +557,7 @@ const Header = () => {
 		    <div class="container">
             <div className=" drp">
 		    <a href='/Otherp' role="button"  className='sfnt' aria-haspopup="true">
-            OtherProduct</a><br></br>
+            Other Product</a><br></br>
 		    <a href='/all-products' role="button" className='sfnt'  aria-haspopup="true">
             Allproducts</a><br></br>
 			<a href='/About' role="button" className='sfnt'  aria-haspopup="true">

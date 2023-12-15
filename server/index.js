@@ -19,53 +19,50 @@ const con = mysql.createConnection({
   })
 
 
-// const con = mysql.createConnection({
-
-//   user: "root",
-//   host: "localhost",
-//   password: "",
-//   database: "trinityash",
-
-//   })
+    //  const con = mysql.createConnection({
+    //  user: "root",
+    //  host: "localhost",
+    //  password: "",
+    //  database: "trinityash",
+    //  })
 
     // Registration details
 
-       app.post('/register', (req, res) => {
+    app.post('/register', (req, res) => {
+    console.log("Registration sucessfull")
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const email = req.body.email;
+    const password= req.body.password;
+    const address = req.body.address;
+    const post = req.body.post;
+    const state = req.body.state;
+    const phone = req.body.phone;
 
-       console.log("Registration sucessfull")
-      const fname = req.body.fname;
-      const lname = req.body.lname;
-      const email = req.body.email;
-      const password= req.body.password;
-      const address = req.body.address;
-      const post = req.body.post;
-      const state = req.body.state;
-      const phone = req.body.phone;
+
+    con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
+    (err, result) => {
+    if(result){
+    res.send(result);
+    }else{
+    res.send({message: "ENTER CORRECT ASKED DETAILS!"})
+    }
+    })
+    })
 
 
-      con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
-      (err, result) => {
-      if(result){
-      res.send(result);
-      }else{
-      res.send({message: "ENTER CORRECT ASKED DETAILS!"})
+    //Email authentication
+
+      app.get('/check-email', (req, res) => {
+      console.log('email exist showing sucessfull');
+      const email = req.query.email;
+      con.query('SELECT * FROM register WHERE email = ?', [email], (err, results) => {
+      if (err) {
+      return res.send({ exists: false, error: err.message });
       }
-      })
-      })
-
-
-      //Email authentication
-
-        app.get('/check-email', (req, res) => {
-        console.log('email exist showing sucessfull');
-        const email = req.query.email;
-        con.query('SELECT * FROM register WHERE email = ?', [email], (err, results) => {
-        if (err) {
-        return res.send({ exists: false, error: err.message });
-        }
-        return res.send({ exists: results.length > 0 });
-        });
-        });
+      return res.send({ exists: results.length > 0 });
+      });
+      });
 
        
        

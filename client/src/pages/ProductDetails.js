@@ -12,6 +12,7 @@ import ProductSummary from '../components/product/ProductSummary';
 import Services from '../components/common/Services';
 import Header from '../components/common/Header';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 const ProductDetails = () => {
@@ -24,7 +25,7 @@ const ProductDetails = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState([null]);
-    
+    const UId = sessionStorage.getItem('useid');
     const {  ratings, rateCount } = product;
 
 
@@ -62,10 +63,10 @@ const ProductDetails = () => {
       }
       const handleAddItem = () => {
         addItem(product);
-        const UId = sessionStorage.getItem('useid');
+        // const UId = sessionStorage.getItem('useid');
         
         
-        fetch('http://65.1.134.51:3001/cart/add', {
+        fetch('http://65.1.134.51:3001/cart/add/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -112,15 +113,15 @@ const ProductDetails = () => {
                 <div className=""><br></br><br></br><br></br>
                             {/* <h1 className="prod_details_title">{name}</h1> */}
                           
-                            <h1 className="prod_details_info">Model: {model_no}</h1>
-                            <h5 className="prod_details_info">Dimension {description}</h5>
-                            <div className="prod_details_ratings">
+                            <h4 className="prod_details_info">Model: {model_no}</h4>
+                            <h5 className="prod_details_info">Dimension: {description}</h5>
+                            {/* <div className="prod_details_ratings">
                                 <span className="rating_star">
                                     {[...Array(rateCount)].map((_, i) => <IoMdStar key={i} />)}
                                 </span>
                                 <span>|</span>
                                 <Link to="*">{ratings} Ratings</Link>
-                            </div>
+                            </div> */}
 
                             <div className="separator"></div>
 
@@ -141,8 +142,9 @@ const ProductDetails = () => {
                                     <span><IoMdCheckmark /> In Stock</span>
                                 </div>
                             </div>
+                            
 
-                            <div className="separator"></div>
+                            {/* <div className="separator"></div>
 
                             <div className="prod_details_offers">
                                 <h4>Offers and Discounts</h4>
@@ -150,12 +152,11 @@ const ProductDetails = () => {
                                     <li>No Cost EMI on Credit Card</li>
                                     <li>Pay Later & Avail Cashback</li>
                                 </ul>
+                            </div> */}
 
-                         
-                            </div>
-                            <div className="separator"></div>
+                            {/* <div className="separator"></div> */}
                             <div className="prod_details_offers">
-                                <div class="row">
+                                {/* <div class="row">
                                     <div class="col-sm-3">
                                         <h4>Delivery</h4></div>
                                     <div class="col-sm-5">
@@ -170,11 +171,12 @@ const ProductDetails = () => {
                                         <button type='' class="small-btn"> check</button>
                                     </div>
 
-                                </div>
+                                </div> */}
                             </div>
                             <div className="separator"></div>
+                            <br></br> <br></br> <br></br> <br></br>
 
-
+<center>
                             <div className="prod_details_buy_btn">
                                 <button
                                     type="button"
@@ -184,7 +186,7 @@ const ProductDetails = () => {
                                     Add to Cart
                                 </button>
 
-                            </div>
+                            </div></center>
 
                         </div>
 				</div>

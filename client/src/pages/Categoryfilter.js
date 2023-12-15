@@ -58,17 +58,16 @@ function Categoryfilter() {
               Selected Category: {selectedCategory}
             </div>
           )}
-                 <div className="container">
-            {allProducts.length ? (
-              <div className="wrapper products_wrapper">
-                {relatedProducts
-                  .filter(item => item.category === category) // Filter products by category
-                     .map(item => (
-                        
-                             <ProductCard {...item} />
-                       
-                     ))}
-              </div>
+
+          <div className="container">
+          {allProducts.length ? (
+          <div className="wrapper products_wrapper">
+          {relatedProducts
+          .filter(item => item.category === category) // Filter products by category
+          .map(item => (
+          <ProductCard {...item} />                    
+          ))}
+          </div>
             ) : (
               <EmptyView icon={<BsExclamationCircle />} msg="No Results Found" />
             )}

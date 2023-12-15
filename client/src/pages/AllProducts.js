@@ -65,6 +65,7 @@ import axios from 'axios';
       <br />
       <br />
       <section id="all_products" className="allp">
+        
         <div ref={filterBarRef}>
           <FilterBar fixed={isFilterBarFixed} />
         </div>

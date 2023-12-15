@@ -62,8 +62,10 @@ const ProductCard = ({ product, id, image, name, price, model_no, description}) 
         <a href={`http://65.1.134.51:3001/product-details/${id}`}style={{ fontSize: '24px',fontFamily:'Roboto, sans-serif' }}></a>
       </h3> */}
         <div class='modelm'>         
-        <h4 className=""style={{ fontSize: '25px',fontFamily:'Poppins, sans-serif' }}><font color="#09470b">Model No: {model_no}</font></h4>
-        <h3 className=""style={{ fontSize: '15px',fontFamily:'Poppins, sans-serif' }}>Dimension: {description}</h3>
+
+        <h4 className=""style={{ fontSize: '16px',fontFamily:'Poppins, sans-serif' }}><font color="#09470b">Model No: {model_no}</font></h4>
+                    <h3 className=""style={{ fontSize: '15px',fontFamily:'Poppins, sans-serif' }}>Dimension: {description}</h3>
+
         </div> 
                   
       <div className="separator"></div>	
