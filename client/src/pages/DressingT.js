@@ -47,7 +47,7 @@ const DressingT = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
+     axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);
@@ -70,13 +70,13 @@ const DressingT = () => {
         
       <main> <Header /><br/><br/><br/><br></br><br></br>
      
-			
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/dressingt.png" alt="Your Image" class="responsive-image"/>
+</div>	
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Dressing Table </font></h1></center>
-      <hr/>
+   
 
 
 

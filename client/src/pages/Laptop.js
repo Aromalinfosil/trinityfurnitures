@@ -47,7 +47,7 @@ const Laptop = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://:3001/product/${id}`)
+        axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);

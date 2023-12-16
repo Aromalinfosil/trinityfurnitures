@@ -47,7 +47,7 @@ const Abeds = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
+        axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);
@@ -71,11 +71,10 @@ const Abeds = () => {
      
 			
 
-
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Bed </font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/bed90.png" alt="Your Image" class="responsive-image"/>
+</div>
 
 
 

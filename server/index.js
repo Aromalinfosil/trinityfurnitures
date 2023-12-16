@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+
 const con = mysql.createConnection({
   user: "user",
   password: "password",
@@ -29,7 +30,7 @@ const con = mysql.createConnection({
     // Registration details
 
     app.post('/register', (req, res) => {
-    console.log("Registration sucessfull")
+      console.log('Received registration request:', req.body);
     const fname = req.body.fname;
     const lname = req.body.lname;
     const email = req.body.email;

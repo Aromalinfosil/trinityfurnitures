@@ -195,26 +195,6 @@ const ProductDetails = () => {
 	</section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {/* <div class="section_3">
     <Services /></div> */}
         </></>

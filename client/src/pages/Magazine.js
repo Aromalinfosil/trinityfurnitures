@@ -47,7 +47,7 @@ const Magazine = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
+     axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);
@@ -72,10 +72,11 @@ const Magazine = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Magazine Holder</font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/magazineh.png" alt="Your Image" class="responsive-image"/>
+</div>
+
 
 
 
@@ -98,3 +99,5 @@ const Magazine = () => {
 };
 
 export default Magazine;
+
+

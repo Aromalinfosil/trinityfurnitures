@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import HeroSlider from '../components/sliders/HeroSlider';
 import FeaturedSlider from '../components/sliders/FeaturedSlider';
@@ -17,7 +18,6 @@ import RelatedSlider from '../components/sliders/RelatedSlider';
 import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
 import RelatedProduct from '../components/sliders/RelatedProduct';
-
 const Terraceset = () => {
 
     useDocTitle('Product Details');
@@ -59,9 +59,10 @@ const Terraceset = () => {
       setImage(response.data.image);
       setModel_no(response.data.model_no)
       }) 
+
       .catch((error) => {
       console.error('Error fetching product:', error);
-            console.log("Product not found");
+      console.log("Product not found");
           });
       }
 
@@ -72,30 +73,26 @@ const Terraceset = () => {
      
 			
 
-
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Terrace Set </font></h1></center>
-      <hr/>
-
-
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/terrace90.png" alt="Your Image" class="responsive-image"/>
+</div>
+   
 
 
 
 
-
-
-<section id="featured" className="section">
-<div class="a21"><center>New Arrivals...
-</center></div><br></br>
+    <section id="featured" className="section">
+    <div class="a21"><center>New Arrivals...
+    </center></div><br></br>
                    
-<RelatedSlider category="Terrace Set" />
-<div class="a21"><center>Terrace Set<hr/>
-</center></div><br></br><br></br>
-<RelatedProduct category="Terrace Set" />  
-            </section>
-        </main>
+    <RelatedSlider category="Terrace Set" />
+    <div class="a21"><center>Terrace Set<hr/>
+    </center></div><br></br><br></br>
+    <RelatedProduct category="Terrace Set" />  
+    </section>
+    </main>
     );
-};
+    };
 
 export default Terraceset;

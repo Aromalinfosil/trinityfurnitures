@@ -40,7 +40,7 @@ const Workstation = () => {
     }, []);
     
     function getProduct() {
-    axios.get(`http://localhost:3001/product/${id}`)
+    axios.get(`http://65.1.134.51:3001/product/${id}`)
     .then((response) => {
     console.log(response.data);
     setProduct(response.data);
@@ -58,13 +58,18 @@ const Workstation = () => {
     }
 
 
-    return ( 
+    return (  
 
     <main> <Header /><br/><br/><br/><br></br><br></br>
-    <hr/>
-    <center>
-    <h1 class="heading"><font color="#1b4106"> Work Station </font></h1></center>
-    <hr/>
+   	    <br></br>
+     <div class="image-container">
+  <img src="../ass/images/w1.png" alt="Your Image" class="responsive-image"/>
+</div>	
+    
+    
+    
+    
+ 
     <section id="featured" className="section">
     <div class="a21"><center>New Arrivals...
     </center></div><br></br>
@@ -75,7 +80,6 @@ const Workstation = () => {
     <RelatedProduct category="Work Station" />  
     </section>
     </main>
-    
     );
     };
 

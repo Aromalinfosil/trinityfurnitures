@@ -18,7 +18,7 @@ import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
 import RelatedProduct from '../components/sliders/RelatedProduct';
 
-const Adining = () => {
+const Dining = () => {
 
     useDocTitle('Product Details');
 
@@ -48,7 +48,7 @@ const Adining = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001product/${id}`)
+      axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);
@@ -73,10 +73,10 @@ const Adining = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Dining Set</font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/dinnigs.png" alt="Your Image" class="responsive-image"/>
+</div>
 
 
 
@@ -98,4 +98,4 @@ const Adining = () => {
     );
 };
 
-export default Adining;
+export default Dining;

@@ -1,22 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import HeroSlider from '../components/sliders/HeroSlider';
-import FeaturedSlider from '../components/sliders/FeaturedSlider';
-import Door from '../components/sliders/Door';
-import SectionsHead from '../components/common/SectionsHead';
-import TopProducts from '../components/product/TopProducts';
-import TopProducts1 from '../components/product/TopProducts1';
-import Services from '../components/common/Services';
-import { IoMdStar } from 'react-icons/io';
-import { Link, useParams } from 'react-router-dom';
-import ProductCard from '../components/product/ProductCard';
-import { displayMoney } from '../helpers/utils';
+
+import {  useParams } from 'react-router-dom';
+
 import cartContext from '../contexts/cart/cartContext';
 import useActive from '../hooks/useActive';
 import Header from '../components/common/Header';
 import RelatedSlider from '../components/sliders/RelatedSlider';
+import RelatedProduct from '../components/sliders/RelatedProduct';
 import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
-import RelatedProduct from '../components/sliders/RelatedProduct';
+
 const Edoor = () => {
 
     useDocTitle('Product Details');
@@ -47,19 +40,19 @@ const Edoor = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
-      .then((response) => {
-      console.log(response.data);
-      setProduct(response.data);
-      setName(response.data.name);
-      setCategory(response.data.category);
-      setPrice(response.data.price);
-      setDescription(response.data.description);
-      setImage(response.data.image);
-      setModel_no(response.data.model_no)
-      }) 
-      .catch((error) => {
-      console.error('Error fetching product:', error);
+        axios.get(`http://65.1.134.51:3001/product/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            setProduct(response.data);
+            setName(response.data.name);
+            setCategory(response.data.category);
+            setPrice(response.data.price);
+            setDescription(response.data.description);
+            setImage(response.data.image);
+            setModel_no(response.data.model_no)
+          })
+          .catch((error) => {
+            console.error('Error fetching product:', error);
             console.log("Product not found");
           });
       }
@@ -67,31 +60,28 @@ const Edoor = () => {
 
     return (
         
-      <main> <Header /><br/><br/><br/><br></br><br></br>
+        <main> <Header /><br/><br/><br/><br></br><br></br>
      
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Door</font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/door90.png" alt="Your Image" class="responsive-image"/>
+</div>
+
+<br></br>
 
 
 
-
-
-
-
-
-<section id="featured" className="section">
+<section id="featured" className="">
 <div class="a21"><center>New Arrivals...
 </center></div><br></br>
-                   
+
 <RelatedSlider category="Door" />
-<div class="a21"><center>Door<hr/>
+<div class="a21"><center>Doors<hr/>
 </center></div><br></br><br></br>
-<RelatedProduct category="Door" />  
+<RelatedProduct category="Door" />               
             </section>
         </main>
     );

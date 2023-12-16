@@ -14,9 +14,10 @@ import cartContext from '../contexts/cart/cartContext';
 import useActive from '../hooks/useActive';
 import Header from '../components/common/Header';
 import RelatedSlider from '../components/sliders/RelatedSlider';
+import RelatedProduct from '../components/sliders/RelatedProduct';
 import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
-import RelatedProduct from '../components/sliders/RelatedProduct';
+
 const Clock = () => {
 
     useDocTitle('Product Details');
@@ -47,51 +48,58 @@ const Clock = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
-      .then((response) => {
-      console.log(response.data);
-      setProduct(response.data);
-      setName(response.data.name);
-      setCategory(response.data.category);
-      setPrice(response.data.price);
-      setDescription(response.data.description);
-      setImage(response.data.image);
-      setModel_no(response.data.model_no)
-      }) 
-
-      .catch((error) => {
-      console.error('Error fetching product:', error);
-      console.log("Product not found");
+       axios.get(`http://65.1.134.51:3001/product/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            setProduct(response.data);
+            setName(response.data.name);
+            setCategory(response.data.category);
+            setPrice(response.data.price);
+            setDescription(response.data.description);
+            setImage(response.data.image);
+            setModel_no(response.data.model_no)
+          })
+          .catch((error) => {
+            console.error('Error fetching product:', error);
+            console.log("Product not found");
           });
       }
 
 
     return (
         
-      <main> <Header /><br/><br/><br/><br></br><br></br>
+        <main> <Header /><br/><br/><br/><br></br><br></br>
      
-			
+  
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/clock90.png" alt="Your Image" class="responsive-image"/>
+</div>
+		
+                           
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Clock </font></h1></center>
-      <hr/>
-
+                           
    
 
 
-    <section id="featured" className="section">
-    <div class="a21"><center>New Arrivals...
-    </center></div><br></br>
+
+
+
+
+
+<section id="featured" className="section">
+<div class="a21"><center>New Arrivals...
+</center></div><br></br>
                    
-    <RelatedSlider category="Clock" />
-    <div class="a21"><center>Clock<hr/>
-    </center></div><br></br><br></br>
-    <RelatedProduct category="Clock" />  
-    </section>
-    </main>
+<RelatedSlider category="Clock" />
+<div class="a21"><center>Clocks<hr/>
+</center></div><br></br><br></br>
+<RelatedProduct category="Clock" />
+               
+            </section>
+        </main>
     );
-    };
+};
 
 export default Clock;

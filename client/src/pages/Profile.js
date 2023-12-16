@@ -134,7 +134,6 @@ const Profile = (props) => {
         <div class="row mt-2">
         <div class="col-md-6"><label class="labels">Name</label>
         <input type="name"  onChange={(e) =>{setFname(e.target.value)}} value ={fname} class="form-control" placeholder="First Name"/></div>
-      
         <div class="col-md-6"><label class="labels">Surname</label>  <input type="name"  onChange={(e) =>{setLname(e.target.value)}} value ={lname}class="form-control" placeholder="Surname"/></div>
         </div>
 
@@ -142,7 +141,7 @@ const Profile = (props) => {
         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="number"  onChange={(e) =>{setPhone(e.target.value)}} value ={phone} class="form-control"  placeholder="Mobile Number"/></div>
         <div class="col-md-12"><label class="labels">Email ID</label><input type="email"  onChange={(e) =>{setEmail(e.target.value)}}value ={email} class="form-control"  placeholder="Email ID"/></div>
         <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" onChange={(e) =>{setAddress(e.target.value)}} value ={address} class="form-control"  placeholder="Address Line 1"/></div>
-        <div class="col-md-12"><label class="labels">Password</label><input type="password"   onChange={(e) =>{setPassword(e.target.value)}}value ={password} class="form-control"  placeholder="Password"/></div>
+        <div class="col-md-12"><label class="labels">Password</label><input type="text"   onChange={(e) =>{setPassword(e.target.value)}}value ={password} class="form-control"  placeholder="Password"/></div>
         <div class="col-md-12"><label class="labels">Postcode</label><input type="number"  onChange={(e) =>{setPost(e.target.value)}} value ={post} class="form-control"  placeholder="Postcode"/></div>
         <div class="col-md-12"><label class="labels">State</label><input type="text"   onChange={(e) =>{setState(e.target.value)}} value ={state} class="form-control"  placeholder="State"/></div> 
                       

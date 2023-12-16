@@ -72,11 +72,11 @@ const Trolley = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Trolley </font></h1></center>
-      <hr/>
-
+     
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/trolley90.png" alt="Your Image" class="responsive-image"/>
+</div>
 
 
 

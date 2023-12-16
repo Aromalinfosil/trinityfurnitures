@@ -47,7 +47,7 @@ const Flower = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
+    axios.get(`http://65.1.134.51:3001/product/${id}`)
       .then((response) => {
       console.log(response.data);
       setProduct(response.data);
@@ -72,10 +72,11 @@ const Flower = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Flower Vase</font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/Flowervase90.png" alt="Your Image" class="responsive-image"/>
+</div>
+   
 
 
 
@@ -89,7 +90,7 @@ const Flower = () => {
 </center></div><br></br>
                    
 <RelatedSlider category="Flower Vase" />
-<div class="a21"><center> Flower Vase<hr/>
+<div class="a21"><center>Flower Vase<hr/>
 </center></div><br></br><br></br>
 <RelatedProduct category="Flower Vase" />  
             </section>
@@ -98,5 +99,3 @@ const Flower = () => {
 };
 
 export default Flower;
-
-  

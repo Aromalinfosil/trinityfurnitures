@@ -84,24 +84,25 @@ const AccountForm = () => {
     
             const register = (e) => {  
             e.preventDefault();
-
-
+            console.log("Registering user:", { fname, lname, email, password, address, post, state, phone });
             Axios.get(`http://65.1.134.51:3001/check-email?email=${email}`).then((response) => {
             if (response.data.exists) {
             setEmailExists(true);
             } else {
-            Axios.post("/register", {
-            fname: fname,
-            lname: lname,
-            email: email,
-            password: password, 
-            address : address,
-            post : post,
-            state: state,
-            phone : phone,
-
-
-            }).then((response) => {
+              Axios.post("http://65.1.134.51:3001/register", {
+                fname: fname,
+                lname: lname,
+                email: email,
+                password: password, 
+                address : address,
+                post : post,
+                state: state,
+                phone : phone,
+             }, {
+                headers: {
+                   'Content-Type': 'application/json',
+                }
+             }).then((response) => {
             if (response.data.message) {
             setRegisterStatus(response.data.message);
             } else {
@@ -142,11 +143,7 @@ const AccountForm = () => {
 
     const handleIsSignupVisible = () => {
     setIsSignupVisible(prevState => !prevState);
-    };
-
-   
-
-    
+    };    
 
     const [show1, setShow1] = useState(false);
 
@@ -155,9 +152,9 @@ const AccountForm = () => {
     const handleForgotPassword = () => {
   };
 
-    return (
-        <>
-        <>
+  return (
+  <>
+  <>
 
       <Modal show={show1} onHide={handleClose1} animation={false}>  
       <Modal.Header class="" closeButton></Modal.Header>     
@@ -189,17 +186,16 @@ const AccountForm = () => {
         {/* {emailExists && <p style={{ color: 'red' }}>This Email id is already exist!</p>} */}
         </div>
 
-
-
         <div className="form-control gp">  
         <label class="intxty">Enter your Password</label> &nbsp; &nbsp; &nbsp;
         <input className="" type="password" name="password" onChange={(e) =>{setPassword(e.target.value)}} required /> 
         </div>
+
  
           <div className="">  
-         <center><input  class="custom-btn btn-1" type="submit" onClick={register}  /></center>
+          <center><input  class="custom-btn btn-1" type="submit" onClick={register}  /></center>
          <div style={{color: 'red', fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{registerStatus}</div>
-        </div>  
+         </div>  
 
            
 

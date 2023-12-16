@@ -14,10 +14,11 @@ import cartContext from '../contexts/cart/cartContext';
 import useActive from '../hooks/useActive';
 import Header from '../components/common/Header';
 import RelatedSlider from '../components/sliders/RelatedSlider';
+import RelatedProduct from '../components/sliders/RelatedProduct';
 import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
-import RelatedProduct from '../components/sliders/RelatedProduct';
-const Bar = () => {
+
+const Chair = () => {
 
     useDocTitle('Product Details');
 
@@ -47,21 +48,20 @@ const Bar = () => {
       }, []);
     
       function getProduct() {
-      axios.get(`http://65.1.134.51:3001/product/${id}`)
-      .then((response) => {
-      console.log(response.data);
-      setProduct(response.data);
-      setName(response.data.name);
-      setCategory(response.data.category);
-      setPrice(response.data.price);
-      setDescription(response.data.description);
-      setImage(response.data.image);
-      setModel_no(response.data.model_no)
-      }) 
-
-      .catch((error) => {
-      console.error('Error fetching product:', error);
-      console.log("Product not found");
+        axios.get(`http://65.1.134.51:3001/product/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            setProduct(response.data);
+            setName(response.data.name);
+            setCategory(response.data.category);
+            setPrice(response.data.price);
+            setDescription(response.data.description);
+            setImage(response.data.image);
+            setModel_no(response.data.model_no)
+          })
+          .catch((error) => {
+            console.error('Error fetching product:', error);
+            console.log("Product not found");
           });
       }
 
@@ -73,25 +73,30 @@ const Bar = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Rocking Chair </font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/rchair.png" alt="Your Image" class="responsive-image"/>
+</div>
 
 
 
 
-    <section id="featured" className="section">
-    <div class="a21"><center>New Arrivals...
-    </center></div><br></br>
+
+
+
+
+<section id="featured" className="section">
+<div class="a21"><center>New Arrivals...
+</center></div><br></br>
                    
-    <RelatedSlider category="Rocking Chair" />
-    <div class="a21"><center>Rocking Chair<hr/>
-    </center></div><br></br><br></br>
-    <RelatedProduct category="Rocking Chair" />  
-    </section>
-    </main>
+<RelatedSlider category="Rocking Chair" />
+<div class="a21"><center>Rocking Chair<hr/>
+</center></div><br></br><br></br>
+<RelatedProduct category="Rocking Chair" />    
+               
+            </section>
+        </main>
     );
-    };
+};
 
-export default Bar;
+export default Chair;

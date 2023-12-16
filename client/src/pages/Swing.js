@@ -69,24 +69,29 @@ const Swing = () => {
         
       <main> <Header /><br/><br/><br/><br></br><br></br>
      
-			
+		
+
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/swing90.png" alt="Your Image" class="responsive-image"/>
+</div>
+   
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Swing </font></h1></center>
-      <hr/>
+
+
+
 
 
 
 
 <section id="featured" className="section">
 <div class="a21"><center>New Arrivals...
-</center></div><br></br>
+</center></div>
                    
 <RelatedSlider category="Swing" />
 <div class="a21"><center>Swing<hr/>
-</center></div><br></br><br></br>
+</center></div><br></br>
 <RelatedProduct category="Swing" />  
             </section>
         </main>

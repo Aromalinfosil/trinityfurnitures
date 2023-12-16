@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import HeroSlider from '../components/sliders/HeroSlider';
 import FeaturedSlider from '../components/sliders/FeaturedSlider';
@@ -58,9 +59,10 @@ const Tvunit = () => {
       setImage(response.data.image);
       setModel_no(response.data.model_no)
       }) 
+
       .catch((error) => {
       console.error('Error fetching product:', error);
-            console.log("Product not found");
+      console.log("Product not found");
           });
       }
 
@@ -71,26 +73,26 @@ const Tvunit = () => {
      
 			
 
-
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> TV Unit </font></h1></center>
-      <hr/>
-
-
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/tv90.png" alt="Your Image" class="responsive-image"/>
+</div>
+   
 
 
-<section id="featured" className="section">
-<div class="a21"><center>New Arrivals...
-</center></div><br></br>
+
+
+    <section id="featured" className="section">
+    <div class="a21"><center>New Arrivals...
+    </center></div><br></br>
                    
-<RelatedSlider category="TV Unit" />
-<div class="a21"><center>TV Unit<hr/>
-</center></div><br></br><br></br>
-<RelatedProduct category="TV Unit" />  
-            </section>
-        </main>
+    <RelatedSlider category="TV Unit" />
+    <div class="a21"><center>TV Unit<hr/>
+    </center></div><br></br><br></br>
+    <RelatedProduct category="TV Unit" />  
+    </section>
+    </main>
     );
-};
+    };
 
 export default Tvunit;
