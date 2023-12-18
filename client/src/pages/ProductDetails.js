@@ -103,9 +103,7 @@ const ProductDetails = () => {
 							<a href={`http://65.1.134.51:3001/uploads/${image}`}>
 								<img src={`http://65.1.134.51:3001/uploads/${image}`} alt="" class="xzoom-gallery" width="80"/>
 							</a>
-							{/* <a href={`/uploads/${image}`}>
-								<img src={`/uploads/${image}`} alt="" class="xzoom-gallery" width="80"/>
-							</a> */}
+					
 						</div>
 					</div>
 				</div>
@@ -135,11 +133,11 @@ const ProductDetails = () => {
                                         {category} &nbsp;
                                        
                                     </h2> */}
-                                    <span className="tax_txt">(Inclusive of all taxes)</span>
+                                <span className="tax_txt">(Inclusive of all taxes)</span>
                                 </div>
 
-                                <div className="badge">
-                                    <span><IoMdCheckmark /> In Stock</span>
+                            <div className="badge">
+                            <span><IoMdCheckmark /> In Stock</span>
                                 </div>
                             </div>
                             

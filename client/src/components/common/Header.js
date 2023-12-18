@@ -247,8 +247,7 @@ const Header = () => {
 							
 							<a class="nav-link dropdown-toggle" href="/Service" id="navbarDropdown1"  data-toggle="dropdown" aria-haspopup="true"
 							    aria-expanded="false" >
-						
-						<font color="#000"> Swing</font>	
+									<Link to="/Swing"><font color="#000"> Swing</font></Link>	
 							</a>
 							<ul class="dropdown-menu mega-menu ">
 								<li>
@@ -291,7 +290,7 @@ const Header = () => {
 							<a class="nav-link dropdown-toggle" href="/Service" id="navbarDropdown1"  data-toggle="dropdown" aria-haspopup="true"
 							    aria-expanded="false" >
 						
-						<font color="#000"> Doors</font>	
+						<Link to="/Door">	<font color="#000"> Doors</font></Link>	
 							</a>
 							<ul class="dropdown-menu mega-menu ">
 								<li>
@@ -337,7 +336,7 @@ const Header = () => {
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<font color="#000">Bedrooms</font>	
+						<Link to="/Bed"><font color="#000">Bedrooms</font>	</Link>	
 					</a>
 
 					<ul class="dropdown-menu mega-menu ">
@@ -367,16 +366,16 @@ const Header = () => {
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<font color="#000">Living</font>	
+					<font color="#000" >Living</font>	
 					</a>
 					<ul class="dropdown-menu mega-menu ">
 					<li>
 					<div class="row">
-					<div class="col-md-3 media-list span4 text-left">	
+					<div class="col-md-2 media-list span4 text-left">	
 					<ul>
 											
 					<li class="media-mini mt-3">
-					<h5 class="tittle-w3layouts-sub"><u>Sofa </u> </h5>
+					<h5 class="tittle-w3layouts-sub" ><u>Sofa </u> </h5>
 					<a href="/Sofa">	<font color="black"> Sofa</font></a>
 					</li>
 
@@ -386,14 +385,16 @@ const Header = () => {
 					</ul>
 
 					</div>
-					<div class="col-md-4 media-list span4 text-left">
+					<div class="col-md-3 media-list span4 text-left">
 										
 					<ul>
 					<li class="media-mini mt-3">
 					<h5 class="tittle-w3layouts-sub"><u>Cabinet</u> </h5>
 					<a href="/Show cabinet">	<font color="black">Show Cabinet</font></a>
 					</li>
-
+					<li>
+					<a href="/TV Unit">	<font color="black">TV Unit </font></a>
+					</li>
 					<li>
 					<a href="/Wardrobe">	<font color="black">Wardrobe </font></a>
 					</li>						
@@ -409,15 +410,11 @@ const Header = () => {
 					<li>
 					<a href="/Corner Rack">	<font color="black">Corner Rack</font></a>
 						</li>
-
-						<li>
-					<a href="/TV Unit">	<font color="black">TV Unit</font></a>
-						</li>
 											
 						</ul>
 
 					</div>
-					<div class="col-md-2 media-list span4 text-left">											
+					<div class="col-md-3 media-list span4 text-left">											
 					<div class="media-mini mt-3">
 					<ul>
 										
@@ -444,10 +441,10 @@ const Header = () => {
 					< a href='Dining'><h5 class="tittle-w3layouts-sub"> <u>Dining</u> </h5></a>	
 					<a href="/Dining Set"><font color="black">Dining Set</font></a>
 					</li>
-					<li class="">
-					<a href="/Kitchen Cabinet"><font color="black">Kitchen Cabinet</font></a>
+					{/* <li class="">
+					<a href="/Kitchencabinet"><font color="black">Kitchen Cabinet</font></a>
 					</li>
-												
+												 */}
 												
 				</ul>
 				</div>
@@ -470,12 +467,12 @@ const Header = () => {
 
 				<li class="media-mini mt-3">
 				< a href='/Religious'><h5 class="tittle-w3layouts-sub"> <u>Religious</u> </h5></a>	
-				<a href="/"><font color="black">.....</font></a>
+				<a href="/"><font color="black">Religious</font></a>
 				</li>
 
-				<li class="">
+				{/* <li class="">
 				<a href="/Kitchencabinet"><font color="black">.....</font></a>
-				</li>							
+				</li>							 */}
 												
 				</ul>
 				</div>

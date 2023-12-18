@@ -29,14 +29,26 @@ const AccountForm = () => {
  
 
    
-    const submit = () =>{
-    axios.post("/register").then((res)=>{
-    console.log()
-    })
-    .catch((err)=>{
-    console.log(err)
-    })
-    }
+    const submit = () => {
+      axios
+        .post("http://65.1.134.51:3001/register", {
+          fname: fname,
+          lname: lname,
+          email: email,
+          password: password,
+          address: address,
+          post: post,
+          state: state,
+          phone: phone,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    
 
     const login = (e) => {
       e.preventDefault();
@@ -81,44 +93,33 @@ const AccountForm = () => {
       });
     }
 
+    const register = (e) => {
+      e.preventDefault();
+      console.log("Registering user:", { fname, lname, email, password, address, post, state, phone });
     
-            const register = (e) => {  
-            e.preventDefault();
-            console.log("Registering user:", { fname, lname, email, password, address, post, state, phone });
-            Axios.get(`http://65.1.134.51:3001/check-email?email=${email}`).then((response) => {
-            if (response.data.exists) {
-            setEmailExists(true);
-            } else {
-              Axios.post("http://65.1.134.51:3001/register", {
-                fname: fname,
-                lname: lname,
-                email: email,
-                password: password, 
-                address : address,
-                post : post,
-                state: state,
-                phone : phone,
-             }, {
-                headers: {
-                   'Content-Type': 'application/json',
-                }
-             }).then((response) => {
-            if (response.data.message) {
+      Axios.post("http://65.1.134.51:3001/register", {
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password,
+        address: address,
+        post: post,
+        state: state,
+        phone: phone,
+      })
+        .then((response) => {
+          if (response.data.message) {
             setRegisterStatus(response.data.message);
-            } else {
+          } else {
             setRegisterStatus("ACCOUNT CREATED SUCCESSFULLY");
             window.location.href = "/";
-            }
-            }).catch((error) => {
-            console.error("Error registering:", error);
-            });
-            }
-            }).catch((error) => {
-            console.error("Error checking email:", error);
-            });
-            };
-      
-
+          }
+        })
+        .catch((error) => {
+          console.error("Error registering:", error);
+        });
+    };
+    
 
 
 

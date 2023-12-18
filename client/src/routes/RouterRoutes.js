@@ -140,7 +140,7 @@ import Laptop from '../pages/Laptop';
                 <Route path = '/Shoe Rack' element={<Shoe />} />
                 <Route path = '/Corner Rack' element={<Corner />}/>
                 <Route path = '/Bookshelf' element={<Bookshelf />} />
-                <Route path = '/Swing' element={<Swing />} />
+                <Route path = "/swing" element={<Swing />} />
                 <Route path = '/Trolley' element={ <Trolley />} />
                 <Route path = '/Stool' element= { <Stool />} />
                 <Route path = '/Flower Vase' element={<Flower />} />
@@ -156,9 +156,7 @@ import Laptop from '../pages/Laptop';
                 <Route path="/category/:category" element={<Categoryfilter/>}/>
                 <Route path = '/Religious' element={ <Religious />} /> 
                 <Route path = '/Laptop Table' element={ <Laptop />} /> 
-                
-                
-           
+
 
                 </Routes>
         </>

@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const port = process.env.PORT || 3001;
 
 
 
@@ -328,12 +329,10 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
 
 
     app.post('/cart/add', (req, res) => {
+      
     console.log('Request Body:', req.body)
     const { id, name, image, price,description, UId, quantity, model_no} = req.body;
    
-
-
-
     const query = 'INSERT INTO cart (id, name, image, price, description, UId, quantity, model_no) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     con.query(query, [id, name, image, price, description, UId, quantity, model_no], (err, result) => {
     if (err) {
@@ -633,8 +632,8 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
       // });
 
       
-      app.listen(3001, () => {
-      console.log("running backend server");
+      app.listen(port, () => {
+      console.log("running backend server ${port}");
       })
 
 

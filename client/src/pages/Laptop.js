@@ -72,10 +72,10 @@ const Laptop = () => {
 			
 
 
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106"> Laptop Table</font></h1></center>
-      <hr/>
+     <br></br>
+     <div class="image-container">
+  <img src="../ass/images/lappy.png" alt="Your Image" class="responsive-image"/>
+</div>
 
 
 

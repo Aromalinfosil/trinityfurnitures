@@ -1,52 +1,141 @@
-import React from 'react';
-import HeroSlider from '../components/sliders/HeroSlider';
-import FeaturedSlider from '../components/sliders/FeaturedSlider';
-import Asofa from '../components/sliders/Asofa';
-import SectionsHead from '../components/common/SectionsHead';
-import TopProducts from '../components/product/TopProducts';
-import TopProducts1 from '../components/product/TopProducts1';
-import Services from '../components/common/Services';
-import { Link } from 'react-router-dom';
-import { IoMdStar } from 'react-icons/io';
-import { useContext } from 'react';
-import { displayMoney } from '../helpers/utils';
-import cartContext from '../contexts/cart/cartContext';
-import useActive from '../hooks/useActive';
-import Header from '../components/common/Header';
-const Asofas = (props) => {
+import React, { useState } from 'react';
+import axios from 'axios';
 
-    const { id, images, title, info, finalPrice, originalPrice, rateCount, path } = props;
+function Asofas() {
+  const [formData, setFormData] = useState({
+    fname: '',
+    lname: '',
+    email: '',
+    password: '',
+  });
 
-    const { addItem } = useContext(cartContext);
-    const { active, handleActive, activeClass } = useActive(false);
+  const [registerStatus, setRegisterStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const register = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/register', formData);
+      setRegisterStatus(response.data.message);
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setRegisterStatus('Failed to register. Please try again.');
+    }
+  };
 
 
-    // handling Add-to-cart
-    const handleAddItem = () => {
-        const item = { ...props };
-        addItem(item);
+    
+  return (
+   <>
+  <section className="" style={{ backgroundColor: '#eee' }}>
+        <div className="container ">
+          <div className="row d-flex justify-content-center align-items-center ">
+            <div className="col-lg-12 col-xl-11">
+              <div className="card text-black" style={{ borderRadius: '25px' }}>
+                <div className="card-body p-md-5">
+                  <div className="row justify-content-center">
+                    <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-        handleActive(id);
+                      <form className="mx-1 mx-md-4">
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div className="form-outline flex-fill mb-0">
+                            <input
+                              type="text"
+                              id="fname"
+                              className="form-control"
+                              value={formData.fname}
+                              onChange={handleChange}
+                            />
+                            <label className="form-label" htmlFor="fname">
+                              First Name
+                            </label>
+                          </div>
+                        </div>
 
-        setTimeout(() => {
-            handleActive(false);
-        }, 3000);
-    };
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div className="form-outline flex-fill mb-0">
+                            <input
+                              type="text"
+                              id="lname"
+                              className="form-control"
+                              value={formData.lname}
+                              onChange={handleChange}
+                            />
+                            <label className="form-label" htmlFor="lname">
+                              Last Name
+                            </label>
+                          </div>
+                        </div>
 
-    const newPrice = displayMoney(finalPrice);
-    const oldPrice = displayMoney(originalPrice);
-    return (
-        
-        <main>
-             <Header />
-             <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br> 
-<div class="a21"><center>Sofas</center></div><br></br>
-<center><div class="fontp"> </div></center><br></br><br></br>
-<div class="container-fluid">
-<Asofa/>
-</div>
-        </main>
-    );
-};
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div className="form-outline flex-fill mb-0">
+                            <input
+                              type="email"
+                              id="email"
+                              className="form-control"
+                              value={formData.email}
+                              onChange={handleChange}
+                            />
+                            <label className="form-label" htmlFor="email">
+                              Your Email
+                            </label>
+                          </div>
+                        </div>
 
-export default Asofas;
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div className="form-outline flex-fill mb-0">
+                            <input
+                              type="password"
+                              id="password"
+                              className="form-control"
+                              value={formData.password}
+                              onChange={handleChange}
+                            />
+                            <label className="form-label" htmlFor="password">
+                              Password
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="">
+                          <center>
+                            <input className="custom-btn btn-1" type="submit" onClick={register} />
+                          </center>
+                          <div style={{ color: 'red', fontSize: '15px', textAlign: 'center', marginTop: '20px' }}>
+                            {registerStatus}
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+              
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image"/>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+   
+   
+   
+   
+   </>
+  )
+}
+
+export default Asofas
