@@ -60,22 +60,19 @@ const Flower = () => {
       }) 
       .catch((error) => {
       console.error('Error fetching product:', error);
-            console.log("Product not found");
-          });
+      console.log("Product not found");
+     });
       }
-
 
     return (
         
-      <main> <Header /><br/><br/><br/><br></br><br></br>
+    <main> <Header /><br/><br/><br/><br></br><br></br>
      
-			
-
 
      <br></br>
      <div class="image-container">
-  <img src="../ass/images/Flowervase90.png" alt="Your Image" class="responsive-image"/>
-</div>
+     <img src="../ass/images/Flowervase90.png" alt="Your Image" class="responsive-image"/>
+     </div>
    
 
 

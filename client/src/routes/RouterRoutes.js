@@ -144,7 +144,7 @@ import Laptop from '../pages/Laptop';
                 <Route path = '/Trolley' element={ <Trolley />} />
                 <Route path = '/Stool' element= { <Stool />} />
                 <Route path = '/Flower Vase' element={<Flower />} />
-                <Route path="/Order" element={<Orderdetails/>}/>
+                <Route path=  "/Order" element={<Orderdetails/>}/>
                 <Route path= "/Wall Mirror" element= {<Wall />} />
                 <Route path = "/Chairs" element={<Chairs />} />
                 <Route path = "/Cloth Hanger" element={<Cloth />} />
@@ -156,7 +156,6 @@ import Laptop from '../pages/Laptop';
                 <Route path="/category/:category" element={<Categoryfilter/>}/>
                 <Route path = '/Religious' element={ <Religious />} /> 
                 <Route path = '/Laptop Table' element={ <Laptop />} /> 
-
 
                 </Routes>
         </>

@@ -13,47 +13,54 @@ const port = process.env.PORT || 3001;
 
 
 
-const con = mysql.createConnection({
-  user: "user",
-  password: "password",
-  host: "localhost",
-  database: "trinityash"
-  })
+// const con = mysql.createConnection({
+//   user: "user",
+//   password: "password",
+//   host: "localhost",
+//   database: "trinityash"
+//   })
 
 
-    //  const con = mysql.createConnection({
-    //  user: "root",
-    //  host: "localhost",
-    //  password: "",
-    //  database: "trinityash",
-    //  })
+     const con = mysql.createConnection({
+     user: "root",
+     host: "localhost",
+     password: "",
+     database: "trinityash",
+     })
+ 
+    con.connect((err) => {
+    if (err) {
+    console.error('Error connecting to MySQL:', err);
+    } else {
+    console.log('Connected to MySQL database');
+    }
+    });
+
 
     // Registration details
 
-    app.post('/register', (req, res) => {
+      app.post('/register', (req, res) => {
       console.log('Received registration request:', req.body);
-    const fname = req.body.fname;
-    const lname = req.body.lname;
-    const email = req.body.email;
-    const password= req.body.password;
-    const address = req.body.address;
-    const post = req.body.post;
-    const state = req.body.state;
-    const phone = req.body.phone;
+      const fname = req.body.fname;
+      const lname = req.body.lname;
+      const email = req.body.email;
+      const password= req.body.password;
+      const address = req.body.address;
+      const post = req.body.post;
+      const state = req.body.state;
+      const phone = req.body.phone;
 
+      con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
+      (err, result) => {
+      if(result){
+      res.send(result);
+      }else{
+      res.send({message: "ENTER CORRECT ASKED DETAILS!"})
+      }
+      })
+      })
 
-    con.query("INSERT INTO register (fname, lname, email, password, address, post, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fname,lname,email,password, address, post,state,phone], 
-    (err, result) => {
-    if(result){
-    res.send(result);
-    }else{
-    res.send({message: "ENTER CORRECT ASKED DETAILS!"})
-    }
-    })
-    })
-
-
-    //Email authentication
+        //Email authentication
 
       app.get('/check-email', (req, res) => {
       console.log('email exist showing sucessfull');
@@ -68,62 +75,57 @@ const con = mysql.createConnection({
 
        
        
-       // login section 
-
-
-      app.post("/login", (req, res) => {
-      console.log("login successful");
-      const email = req.body.email;
-      const password = req.body.password;
-
-      con.query(
-      "SELECT * FROM register WHERE email = ? AND password = ?",
-      [email, password],
-      (err, result) => {
-      if (err) {
-      res.send({ error: "An error occurred while processing your request." });
-      } else {
-      if (result.length > 0) {
-      // User is logged in, send back user details including fname (first name)
-      const user = result[0];
-      console.log("User details:", user);
-      res.send({
-         
-      UId: user.UId, 
-      fname: user.fname,   
-      });
-      } else {
-      res.send({ message: "Wrong email or password!" });
-      }
-      }
-      }
-      );
-      });
-
-
-//specific user id fetching 
-
-
-
-app.get('/users/:Uid', (req, res) => {
-  console.log('profile data is fetching')
-  const UId = req.params.Uid;
-  const sql = 'SELECT * FROM register WHERE UId = ?';
-  con.query(sql, [UId], (err, result) => {
-  if (err) {
-  console.log(err);
-  res.status(500).json({ error: 'Internal server error' });
-  } else if (result.length === 0) {
-  res.status(404).json({ error: 'User not found' });
-  } else {
-  res.send(result[0]);
-  }
-  });
-  });
-
+         // login section 
  
 
+        app.post("/login", (req, res) => {
+        console.log("login successful");
+        const email = req.body.email;
+        const password = req.body.password;
 
+        con.query(
+        "SELECT * FROM register WHERE email = ? AND password = ?",
+        [email, password],
+        (err, result) => {
+        if (err) {
+        res.send({ error: "An error occurred while processing your request." });
+        } else {
+        if (result.length > 0) {
+        // User is logged in, send back user details including fname (first name)
+
+        const user = result[0];
+           console.log("User details:", user);
+           res.send({
+           UId: user.UId, 
+           fname: user.fname,   
+           });
+           } else {
+           res.send({ message: "Wrong email or password!" });
+           }
+           }
+           }
+           );
+           });
+          
+       
+    //specific user id fetching 
+
+      app.get('/users/:Uid', (req, res) => {
+      console.log('profile data is fetching')
+      const UId = req.params.Uid;
+      const sql = 'SELECT * FROM register WHERE UId = ?';
+      con.query(sql, [UId], (err, result) => {
+      if (err) {
+      console.log(err);
+      res.status(500).json({ error: 'Internal server error' });
+      } else if (result.length === 0) {
+      res.status(404).json({ error: 'User not found' });
+      } else {
+      res.send(result[0]);
+      }
+      });
+      });
+      
         // product fetching 
 
          app.get("/product", (req, res) => {
@@ -136,146 +138,143 @@ app.get('/users/:Uid', (req, res) => {
          });
          });
 
-// fetching the specific id from backend
+         // fetching the specific id from backend
 
-              app.get("/product/:id", (req, res) => {
-              const id = req.params.id;
-              console.log("productfetching")
-               con.query("SELECT * FROM product WHERE id = ?", [id], (err, result) => {
-              if (err) {
-              console.log(err);
-               } else {
-               if (result.length > 0) {
-               res.send(result[0]); // Assuming there is only one product with the given ID
-               } else {
-                res.status(404).json({ error: "Product not found" });
-                } 
-                }
-                });
-                });
+        app.get("/product/:id", (req, res) => {
+        const id = req.params.id;
+        console.log("productfetching")
+        con.query("SELECT * FROM product WHERE id = ?", [id], (err, result) => {
+        if (err) {
+        console.log(err);
+        } else {
+        if (result.length > 0) {
+        res.send(result[0]); // Assuming there is only one product with the given ID
+        } else {
+        res.status(404).json({ error: "Product not found" });
+        } 
+        }
+        });
+        });
 
        //category section 
   
          app.get("/product/:category", (req, res) => {
          const category = req.params.category;
-        console.log("Fetching products by category:", category);
-    
-    con.query("SELECT * FROM product WHERE category = ?", [category], (err, results) => {
+         console.log("Fetching products by category:", category);
+         con.query("SELECT * FROM product WHERE category = ?", [category], (err, results) => {
+         if (err) {
+         console.log(err);
+         res.status(500).json({ error: "Internal server error" });
+         } else {
+         if (results.length > 0) {
+         res.send(results);
+         } else {
+         res.status(404).json({ error: "No products found in this category" });
+         } 
+         }
+         });
+         });
+
+        //get all users
+
+      app.get("/users", (req, res) => {
+      console.log("user details")
+      con.query("SELECT * FROM register", (err, result) => {
       if (err) {
-        console.log(err);
-        res.status(500).json({ error: "Internal server error" });
+      console.log(err);
       } else {
-        if (results.length > 0) {
-          res.send(results);
-        } else {
-          res.status(404).json({ error: "No products found in this category" });
-        } 
+      res.send(result);
       }
-    });
-});
-
-//get all users
-
-app.get("/users", (req, res) => {
-  console.log("user details")
-  con.query("SELECT * FROM register", (err, result) => {
-  if (err) {
-  console.log(err);
-  } else {
-  res.send(result);
-  }
- });
-});
+      });
+      });
 
 
 
 // user id deleteing 
 
-  app.delete("/delete/:UId", (req, res) => {
-  console.log("deleted the id sucessfully")
-    const UId = req.params.UId;
-    con.query("DELETE FROM register WHERE UId = ?", UId, (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
+       app.delete("/delete/:UId", (req, res) => {
+       console.log("deleted the id sucessfully")
+       const UId = req.params.UId;
+       con.query("DELETE FROM register WHERE UId = ?", UId, (err, result) => {
+       if (err) {
+       console.log(err);
+       } else {
+       res.send(result);
       }
-    });
-  });
+      });
+      });
 
 // deleting the product id
 
-  app.delete("/del/:id", (req, res) => {
-    const id = req.params.id;
-    con.query("DELETE FROM product WHERE id = ?", id, (err, result) => {
+      app.delete("/del/:id", (req, res) => {
+      const id = req.params.id;
+      con.query("DELETE FROM product WHERE id = ?", id, (err, result) => {
       if (err) {
-        console.log(err);
+      console.log(err);
       } else {
-        res.send(result);
+      res.send(result);
       }
-    });
-  });
+      });
+      });
 
   // //updateing the user id
-
-  app.put('/profile/:UId', (req, res) => {
-    console.log("update the user sucessfully",req.body)
-    const UId = req.params.UId;
-    const { fname, lname, email, password, address, post, state, phone } = req.body;
   
-    const query = `UPDATE register SET fname=?, lname=?,  email=?, password=?, address=?, post=?, state=?, phone=? WHERE UId=?`;
-    const values = [fname, lname,  email, password, address, post, state, phone, UId];
+      app.put('/profile/:UId', (req, res) => {
+      console.log("update the user sucessfully",req.body)
+      const UId = req.params.UId;
+      const { fname, lname, email, password, address, post, state, phone } = req.body;
   
-    con.query(query, values, (err, result) => {
+      const query = `UPDATE register SET fname=?, lname=?,  email=?, password=?, address=?, post=?, state=?, phone=? WHERE UId=?`;
+      const values = [fname, lname,  email, password, address, post, state, phone, UId];
+  
+      con.query(query, values, (err, result) => {
       if (err) {
-        console.error('Error updating user:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error updating user:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
       } else {
-        console.log('User updated successfully');
-        res.json({ success: true });
+      console.log('User updated successfully');
+      res.json({ success: true });
       }
-    });
-  })
+      });
+      })
+ 
+      const multer = require('multer');
+      const path = require('path');
+const { register } = require('module');
 
- 
- 
- 
-  const multer = require('multer');
-  const path = require('path');
-
-// Set up multer storage for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
+    // Set up multer storage for file uploads
+      const storage = multer.diskStorage({
+       destination: function (req, file, cb) {
+       cb(null, 'uploads/');
+       },
+       filename: function (req, file, cb) {
     // Generate a unique filename
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    const extension = path.extname(file.originalname);
-    cb(null, file.fieldname + '-' + uniqueSuffix + extension);
-  }
-});
+       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+       const extension = path.extname(file.originalname);
+       cb(null, file.fieldname + '-' + uniqueSuffix + extension);
+       }
+       });
 
 // File filter function to accept only specific image file formats
-const fileFilter = (req, file, cb) => {
+      const fileFilter = (req, file, cb) => {
   // Check if the file is an image
-  if (
+     if (
     file.mimetype.startsWith('image/') &&
     /\.(jpg|jpeg|png|gif)$/i.test(file.originalname)
-  ) {
+    ) {
     cb(null, true); // Accept the file
-  } else {
+    } else {
     cb(new Error('Only JPG, JPEG, PNG, and GIF image files are allowed.'), false); // Reject the file
-  }
-};
+    }
+    };
 
-// Create a multer instance with the storage and file filter
-const upload = multer({ storage: storage, fileFilter: fileFilter });
+    // Create a multer instance with the storage and file filter
+    const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 // Handle POST request to add a new product
-app.post('/product', upload.single('image'), (req, res) => {
-  console.log("image upload sucessfull");
-  const { name, price, category, description, model_no} = req.body;
+        app.post('/product', upload.single('image'), (req, res) => {
+         console.log("image upload sucessfull");
+       const { name, price, category, description, model_no} = req.body;
   const image = req.file.filename;
 
   // Insert the new product into the database
@@ -293,37 +292,37 @@ app.post('/product', upload.single('image'), (req, res) => {
 
 //   product edit section
 
-app.put('/product/:id', upload.single('image'), (req, res) => {
-  console.log("product updated sucessfully")
-  const id = req.params.id;
-  const { name, price, category, description, model_no } = req.body;
-  let image = req.body.currentImage;
+    app.put('/product/:id', upload.single('image'), (req, res) => {
+    console.log("product updated sucessfully")
+    const id = req.params.id;
+    const { name, price, category, description, model_no } = req.body;
+    let image = req.body.currentImage;
 
-  // Check if a new image is uploaded
-  if (req.file) {
+       // Check if a new image is uploaded
+    if (req.file) {
     image = req.file.filename;
-} else {
+    } else {
     // If no new image uploaded, retain the old image
     image = req.body.currentImage;
-}
+    }
 
   // Update the product in the database
-  const sql = 'UPDATE product SET name = ?, price = ?, category = ?, image = ?, description = ?, model_no = ? WHERE id = ?';
-  console.log(id)
+     const sql = 'UPDATE product SET name = ?, price = ?, category = ?, image = ?, description = ?, model_no = ? WHERE id = ?';
+     console.log(id)
 
-  con.query(sql, [name, price, category, image, description, model_no, id], (err, result) => {
-      if (err) {
-          console.error('Error updating product: ', err);
-          res.status(500).json({ error: 'Failed to update product' });
-          return;
-      }
+    con.query(sql, [name, price, category, image, description, model_no, id], (err, result) => {
+    if (err) {
+    console.error('Error updating product: ', err);
+    res.status(500).json({ error: 'Failed to update product' });
+    return;
+    }
 
-      console.log("Parameters:", [name, price, category, image, description, model_no, id]);
+    console.log("Parameters:", [name, price, category, image, description, model_no, id]);
 
-      res.json({ message: 'Product updated successfully' });
-      console.log("Product updated");
-  });
-});
+    res.json({ message: 'Product updated successfully' });
+    console.log("Product updated");
+    });
+    });
 
 
 
@@ -506,7 +505,6 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
 
     // get orders 
 
-    
         app.get('/orders', (req, res) => {
         const sql = 'SELECT * FROM order_details';
         console.log("fetched order details")
@@ -524,19 +522,19 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
 
     // Order delete *IMPORTANT* 
 
-    app.delete("/orders/:Oid", (req, res) => {
-    console.log("order deleted sucessfully")
-    const Oid = req.params.Oid;
-    con.query("DELETE FROM order_details WHERE Oid = ?", Oid, (err, result) => {
-    if (err) {
-    console.log(err);
-    } else {
-    res.send(result);
-    }
-    });
-    });
+          app.delete("/orders/:Oid", (req, res) => {
+          console.log("order deleted sucessfully")
+          const Oid = req.params.Oid;
+          con.query("DELETE FROM order_details WHERE Oid = ?", Oid, (err, result) => {
+          if (err) {
+          console.log(err);
+          } else {
+          res.send(result);
+          } 
+          });
+          });
   
-    // order cancel
+    // order cancel 
 
     app.put('/order/:Oid', (req, res) => {
     console.log("order cancelled")
@@ -556,35 +554,34 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
 
            // order getting by individual user
     
-    app.get('/order-details', (req, res) => {
-    const { Uid } = req.query;
-    console.log("user order is placed")
-    const sql = 'SELECT * FROM order_details WHERE Uid = ?';
-    con.query(sql, [Uid], (err, result) => {
-    if (err) {
-    console.error('Error executing query: ', err);
-    return res.status(500).send('Error executing query');
-    }
-    if (result.length === 0) {
-    return res.status(404).send('No order details found for the user ID');
-    } 
-    return res.status(200).json(result);
-    });
-    });
-    
+            app.get('/order-details', (req, res) => {
+            const { Uid } = req.query;
+            console.log("user order is placed")
+            const sql = 'SELECT * FROM order_details WHERE Uid = ?';
+            con.query(sql, [Uid], (err, result) => {
+            if (err) {
+            console.error('Error executing query: ', err);
+            return res.status(500).send('Error executing query');
+            }
 
-    //  
+            if (result.length === 0) {
+            return res.status(404).send('No order details found for the user ID');
+            } 
+            return res.status(200).json(result);
+            });
+            });
+   
 
-      app.get('/usersorder/:Uid', (req, res) => {
-      const UId = req.params.Uid;
-      const sql = 'SELECT UId, fname, phone, address FROM register WHERE UId = ?';
-      con.query(sql, [UId], (err, result) => {
-      if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'Internal server error' });
-      } else if (result.length === 0) {
-      res.status(404).json({ error: 'User not found' });
-      } else {
+             app.get('/usersorder/:Uid', (req, res) => {
+             const UId = req.params.Uid;
+             const sql = 'SELECT UId, fname, phone, address FROM register WHERE UId = ?';
+             con.query(sql, [UId], (err, result) => {
+             if (err) {
+             console.log(err);
+            res.status(500).json({ error: 'Internal server error' });
+            } else if (result.length === 0) {
+            res.status(404).json({ error: 'User not found' });
+            } else {
       const userData = { 
 
       Uid: result[0].UId,
@@ -600,23 +597,29 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
 
       // suscribe
 
-      app.post('/newsletter', (req, res) => {
-      console.log("Suscribe sucessfull")
-      const name = req.body.name;
-      const email = req.body.email;
-      const post = req.body.post;
+          app.post('/newsletter', (req, res) => {
+          console.log("Suscribe sucessfull")
+          const name = req.body.name;
+          const email = req.body.email;
+          const post = req.body.post;
               
-      con.query("INSERT INTO newsletter (name,  email, post) VALUES (?, ?, ?)", [name,email,post],
-      (err, result) => {
-      if(result){
-      res.send(result);
-      }else{
-      res.send({message: "ENTER CORRECT  ASKED DETAILS!"})
-      }
-      })
-      })  
+         con.query("INSERT INTO newsletter (name,  email, post) VALUES (?, ?, ?)", [name,email,post],
+        (err, result) => {
+        if(result){
+        res.send(result);
+        }else{
+        res.send({message: "ENTER CORRECT  ASKED DETAILS!"})
+        }
+        })
+        })  
+
+
+
+
+  
+ 
       
-     
+    
       // const __dirname1 = path.resolve();
       // app.use(express.static(path.join(__dirname1, './build')));
       // app.get('*', (req, res) =>
@@ -631,16 +634,21 @@ app.put('/product/:id', upload.single('image'), (req, res) => {
       // res.sendFile(indexPath);
       // });
 
-      
-      app.listen(port, () => {
-      console.log("running backend server ${port}");
-      })
+    
+
+   
 
 
+               // .htaccess -> build
 
-// .htaccess -> build
-  
-//       Options -MultiViews
-//       RewriteEngine On
-//       RewriteCond %{REQUEST_FILENAME} !-f
-//       RewriteRule ^ index.html [QSA,L]
+
+            //           Options -MultiViews
+            //          RewriteEngine On
+            //         RewriteCond %{REQUEST_FILENAME} !-f
+            //          RewriteRule ^ index.html [QSA,L]
+
+
+        
+            app.listen(3001, () => {
+              console.log("running backend server");
+              })

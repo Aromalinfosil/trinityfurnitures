@@ -175,144 +175,148 @@ const Cart = () => {
           // Update the quantity and price in the database
        updateQuantityAndPriceInDatabase(itemId, newQuantity);
       }
-  };
-  
-  const updateQuantityAndPriceInDatabase = (itemId, newQuantity) => {
-    // Make an API call to update the quantity and price in the database
-    axios
-      .put('http://65.1.134.51:3001/cart/update', { cartid: itemId, quantity: newQuantity })
-      .then((response) => {
-        console.log(response.data.message); // Log the success message
-      })
-      .catch((error) => {
-        console.error('Error updating quantity and price in the database:', error);
-      });
-  };
-
-  const calculateCartTotal = () => {
-    const total = cartItems.reduce((accumulator, item) => {
-      return accumulator + item.price;
-    }, 0);
-    setCartTotal(total);
+      };
    
-    // Save the cart total to session storage
-    sessionStorage.setItem('cartTotal', total.toString());
-  };
-  
-  useEffect(() => {
-    // Calculate and set the cart total whenever cartItems changes
-    calculateCartTotal();
-  }, [cartItems]);
- 
- 
-  const fetchUserData = (Uid) => {
-    axios.get(`http://65.1.134.51:3001/usersorder/${Uid}`)
-      .then(response => {
-        const userDataResponse = response.data;
-        setUserData(userDataResponse);
-      })
-      .catch(error => {
-        console.error("Error fetching user data:", error);
-      });
-  };
+     const updateQuantityAndPriceInDatabase = (itemId, newQuantity) => {
+    // Make an API call to update the quantity and price in the database
 
-  useEffect(() => {
+    axios
+    .put('http://65.1.134.51:3001/cart/update', { cartid: itemId, quantity: newQuantity })
+    .then((response) => {
+    console.log(response.data.message); // Log the success message
+    })
+    .catch((error) => {
+    console.error('Error updating quantity and price in the database:', error);
+    });
+    };
+
+       const calculateCartTotal = () => {
+       const total = cartItems.reduce((accumulator, item) => {
+       return accumulator + item.price;
+       }, 0);
+       setCartTotal(total);
+   
+      // Save the cart total to session storage
+       sessionStorage.setItem('cartTotal', total.toString());
+       };
+  
+      useEffect(() => {
+    // Calculate and set the cart total whenever cartItems changes
+      calculateCartTotal();
+     }, [cartItems]);
+ 
+ 
+    const fetchUserData = (Uid) => {
+    axios.get(`http://65.1.134.51:3001/usersorder/${Uid}`)
+    .then(response => {
+    const userDataResponse = response.data;
+    setUserData(userDataResponse);
+    })
+    .catch(error => {
+    console.error("Error fetching user data:", error);
+    });
+    };
+
+    useEffect(() => {
     const Uid = sessionStorage.getItem("useid"); // Get the Uid from the session storage
     if (Uid) {
-      fetchUserData(Uid); 
+    fetchUserData(Uid); 
     }
-  }, []);
+    }, []);
   
  
     return (
         <>
-            <Header /><br/><br/><br/><br/><br/>
+    <Header /><br/><br/><br/><br/><br/>
 
             
-            <section id="cart" className="section">
-                <div className="container">
-                    {  cartItemCount === 0 ? (
+    <section id="cart" className="section">
+    <div className="container">
+    {  cartItemCount === 0 ? (
 
-                        <EmptyView
-                            icon={<img src="../ass/images/the.gif" alt="" class="img-responsive img-fluid mjy" />}
-                            msg="Your Cart is Empty"
-                            link="/all-products"
-                            btnText="Start Shopping"
-                        />
-                    ) : (
-                        <div className="wrapper cart_wrapper">
-                            <div className="cart_left_col">
-                            {cartItems.map((item) => (
-        <div key={item.cartid} className="cart_item">
-          <figure className="cart_item_img">
-            <Link to={`/product-details/${item.id}`}>
-              <img src={`http://65.1.134.51:3001/uploads/${item.image}`} alt="product-img" />
-            </Link>
-          </figure>
-          <div className="cart_item_info">
-            <div className="cart_item_head">
-              <h4 className="cart_item_title">
-                <Link to={`/product-details/${item.id}`}>
-                  {item.name} {item.description}
-                </Link>
-              </h4>
-              <div className="cart_item_del">
-                <span onClick={() => removeItem(item.cartid)}>
-                  <TbTrash />
-                </span>
-                <div className="tooltip">Remove Item</div>
-              </div>
-            </div>
+    <EmptyView
+    icon={<img src="../ass/images/the.gif" alt="" class="img-responsive img-fluid mjy" />}
+    msg="Your Cart is Empty"
+    link="/all-products"
+    btnText="Start Shopping"
+    />
 
-            <h2 className="cart_item_price">{displayMoney(item.price)} &nbsp;</h2>
+    ) : (
+    <div className="wrapper cart_wrapper">
+    <div className="cart_left_col">
+    {cartItems.map((item) => (
+    <div key={item.cartid} className="cart_item">
+    <figure className="cart_item_img">
+    <Link to={`/product-details/${item.id}`}>
+    <img src={`http://65.1.134.51:3001/uploads/${item.image}`} alt="product-img" />
+     </Link>
 
-            <QuantityBox
-            itemId={item.cartid} // Pass the cartid as itemId
-            itemQuantity={item.quantity} // Pass the quantity as itemQuantity
-            incrementItem={incrementItem} // Pass the increment function from cartContext
-            decrementItem={decrementItem} // Pass the decrement function from cartContext
-            onQuantityChange={handleQuantityChange}
+    </figure>
+    <div className="cart_item_info">
+    <div className="cart_item_head">
+    <h4 className="cart_item_title">
+    <Link to={`/product-details/${item.id}`}>
+    {item.name}<br></br>
+    {item.description}
+    </Link>
+    </h4>
+    <div className="cart_item_del">
+    <span onClick={() => removeItem(item.cartid)}>
+    <TbTrash />
+    </span>
+    <div className="tooltip">Remove Item</div>
+    </div>
+    </div>
+
+    <h2 className="cart_item_price">{displayMoney(item.price)} &nbsp;</h2>
+
+    <QuantityBox
+    itemId={item.cartid} // Pass the cartid as itemId
+    itemQuantity={item.quantity} // Pass the quantity as itemQuantity
+    incrementItem={incrementItem} // Pass the increment function from cartContext
+    decrementItem={decrementItem} // Pass the decrement function from cartContext
+    onQuantityChange={handleQuantityChange}
             // Pass the handleQuantityChange function
             />   
-            </div>
-            </div>
-            ))} 
+    </div>
+    </div>
+    ))} 
                               
-          </div>
-          <div className="cart_right_col">
-          <div className="order_summary">
-          <h3>
-          Order Summary &nbsp;
-          ( {cartItemCount} {cartItemCount > 1 ? 'items' : 'item'} )
-          </h3>
-          <div className="order_summary_details">
-          <div className="price">
-          <span>Original Price</span>
-          <b>{cartTotal}</b>
-          </div>
+    </div>
+    <div className="cart_right_col">
+    <div className="order_summary">
+    <h3>
+    Order Summary &nbsp;
+    ( {cartItemCount} {cartItemCount > 1 ? 'items' : 'item'} )
+    </h3>
+    <div className="order_summary_details">
+    <div className="price">
+    <span>Original Price</span>
+    <b>{cartTotal}</b>
+    </div>
                                       
-          <div className="delivery">
-          <span>Delivery</span>
-          <b>Free</b>
-          </div>
+    <div className="delivery">
+    <span>Delivery</span>
+    <b>Free</b>
+    </div>
 
 
-        <div className="separator"></div>
-        <div className="total_price">
-        <b><small>Total Price</small></b>
-        <b>{cartTotal}</b>
-        </div>  
-        </div>
+    <div className="separator"></div>
+    <div className="total_price">
+    <b><small>Total Price</small></b>
+    <b>{cartTotal}</b>
+    </div>  
+    </div>
 
-        <ConfettiCannon />
+    <ConfettiCannon />
 
 
 
-        <div class="last">
-        <center> <button class="btn1 js-confetti btn-ammu" data-toggle="modal" data-target="#exampleModal"  onClick={handleBuyNow} >Buy Now</button>
-        </center>                              
-        <br/><br/>
-        <div class="last">
+      <div class="last">
+      <center> <button class="btn1 js-confetti btn-ammu" data-toggle="modal" data-target="#exampleModal"  onClick={handleBuyNow} >Buy Now</button>
+      </center>                              
+      <br/><br/>
+      <div class="last">
                                             
         </div>                                       
         {showSuccessModal && (
@@ -322,53 +326,50 @@ const Cart = () => {
         <div class="modal-content">
         <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">HOOOOrrraaaayyy</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> 
 
-          <div class="modal-body">
-          your order have been placed , Please check the below link for more details
-           </div>
-           <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-           <button type="button" class="btn btn-primary"><a href='/order'>Order details</a></button>
-            </div>
-            </div>
-            </div>
-            </div>
-             )}
+      <div class="modal-body">
+      your order have been placed , Please check the below link for more details
+      </div>
 
-          {showEmptyModal && (
-          <div className="modal fade show" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-          <div className="modal-content">
-          <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">OOPS</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div className="modal-body">
-          your order is not placed. Please add your address in the profile page. The link to the profile page is below.
-          </div>
-          <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" className="btn btn-primary"><a href={`/profile/${UId}`}>Profile</a></button>
-          </div>
-          </div>
-          </div>
-          </div>
-          )}
-          </div>
-          </div>
-          </div>
-          </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary"><a href='/order'>Order details</a></button>
+      </div>
+      </div>
+      </div>
+      </div>
+       )}
+
+      {showEmptyModal && (
+       <div className="modal fade show" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+      <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">OOPS</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
+        your order is not placed. Please add your address in the profile page. The link to the profile page is below.
+        </div>
+        <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary"><a href={`/profile/${UId}`}>Profile</a></button>
+        </div>
+        </div>
+        </div>
+        </div>
+        )}
+        </div>
+        </div>
+        </div>
+        </div>
           )}
           </div>
               
-  
-
-
-
             </section>
             
         </>

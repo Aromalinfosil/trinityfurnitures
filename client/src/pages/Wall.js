@@ -57,11 +57,11 @@ const Wall = () => {
       setImage(response.data.image);
       setModel_no(response.data.model_no)
       }) 
-
       .catch((error) => {
       console.error('Error fetching product:', error);
       console.log("Product not found");
       });
+
          }
 
 
@@ -73,24 +73,26 @@ const Wall = () => {
 
      <br></br>
      <div class="image-container">
-  <img src="../ass/images/wall90.png" alt="Your Image" class="responsive-image"/>
-</div>
+     <img src="../ass/images/wall90.png" alt="Your Image" class="responsive-image"/>
+     </div>
 
 
    
 
 
-    <section id="featured" className="section">
-    <div class="a21"><center>New Arrivals...
-    </center></div><br></br>
+      <section id="featured" className="section">
+      <div class="a21"><center>New Arrivals...
+      </center></div><br></br>
                    
-    <RelatedSlider category="Wall Mirror" />
-    <div class="a21"><center>Wall Mirror<hr/>
-    </center></div><br></br><br></br>
-    <RelatedProduct category="Wall Mirror" />  
-    </section>
-    </main>
-    );
-    };
+      <RelatedSlider category="Wall Mirror" />
+      <div class="a21"><center>Wall Mirror<hr/>
+      </center></div><br></br><br></br>
+      <RelatedProduct category="Wall Mirror" />  
+      </section>
+      </main>
+      );
+      };
+
+         
 
 export default Wall;

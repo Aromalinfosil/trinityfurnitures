@@ -117,22 +117,14 @@ function Otherp() {
                                     </div>
 
                                     <div class="row">
-				
-             
-                            
-                            
-                                        
-                                    
-                                
-                                
-                    
+			  
                              
-                                <div class="col-md-3 product-men women_two">
+                    <div class="col-md-3 product-men women_two">
                     <div class="product-googles-info1 googles"style={{border:"none"}} >
-                        <div class="men-pro-item">
-                            <div class="men-thumb-item">
-                                <img src="../ass/images/Flowervase23.jpg" class="img-fluid5 gallery-image" alt=""/><br></br><br></br>
-                                <h3>Flowervase</h3>
+                    <div class="men-pro-item">
+                    <div class="men-thumb-item">
+                            <a href='/Flower Vase'> <img src="../ass/images/Flowervase23.jpg" class="img-fluid5 gallery-image" alt=""/><br></br><br></br>
+                                <h3>Flowervase</h3></a>
                                 </div></div></div></div>
                                 {/* <div class="col-md-3 product-men women_two">
                     <div class="product-googles-info1 googles"style={{border:"none"}} >
@@ -148,7 +140,7 @@ function Otherp() {
                             <div class="men-thumb-item">
                             <div class="">
                           
-                            <a href='/Terraceset'><img src="../ass/images/terraceset9.png" class="img-fluid5 gallery-image" alt=""/><br></br><br></br>
+                            <a href='/Terrace Set'><img src="../ass/images/terraceset9.png" class="img-fluid5 gallery-image" alt=""/><br></br><br></br>
                                 <h3><font color="black">Terrace Set</font></h3></a>
                                 </div></div></div></div>
                                 </div>

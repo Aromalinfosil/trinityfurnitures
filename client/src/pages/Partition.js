@@ -49,21 +49,21 @@ const Partition = () => {
     
       function getProduct() {
        axios.get(`http://65.1.134.51:3001/product/${id}`)
-          .then((response) => {
-            console.log(response.data);
-            setProduct(response.data);
-            setName(response.data.name);
-            setCategory(response.data.category);
-            setPrice(response.data.price);
-            setDescription(response.data.description);
-            setImage(response.data.image);
-            setModel_no(response.data.model_no)
-          })
-          .catch((error) => {
-            console.error('Error fetching product:', error);
-            console.log("Product not found");
-          });
-      }
+        .then((response) => {
+        console.log(response.data);
+        setProduct(response.data);
+        setName(response.data.name);
+        setCategory(response.data.category);
+        setPrice(response.data.price);
+        setDescription(response.data.description);
+        setImage(response.data.image);
+        setModel_no(response.data.model_no)
+        })
+        .catch((error) => {
+        console.error('Error fetching product:', error);
+        console.log("Product not found");
+        });
+        }
 
 
     return (

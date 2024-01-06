@@ -6,25 +6,25 @@ import cartContext from '../../contexts/cart/cartContext';
 import useActive from '../../hooks/useActive';
 import axios from 'axios';
 
-const ProductCard = ({ product, id, image, name, price, model_no, description}) => {
+    const ProductCard = ({ product, id, image, name, price, model_no, description}) => {
    
-  console.log(product)  
+     console.log(product)  
 
-     const [products, setProducts] = useState([]);
-     useEffect(() => {
+      const [products, setProducts] = useState([]);
+      useEffect(() => {
       // Fetch product data from the backend
-      axios.get('http://65.1.134.51:3001/product')
-      .then(response => {
-      setProducts(response.data.reverse());
+       axios.get('http://65.1.134.51:3001/product')
+       .then(response => {
+        setProducts(response.data.reverse());
          
           
-      console.log("productfetched") 
-      })
-      .catch(error => {
-          console.log(error);
-          console.log("data not fetched")
-        });
-    }, []);
+         console.log("productfetched") 
+         })
+        .catch(error => {
+         console.log(error);
+         console.log("data not fetched")
+         });
+         }, []);
 
   // Handling Add-to-cart
 
@@ -51,37 +51,41 @@ const ProductCard = ({ product, id, image, name, price, model_no, description}) 
       </div>
       </div>
              
-        </div>
-        </div><div class="container">
-				<div class="item-info-product">
-				<div class="info-product-price">
-				<div class="grid_meta">
-        <br></br>
-				<div class="product_price">
-        {/* <h3 className="">hghh
-        <a href={`http://65.1.134.51:3001/product-details/${id}`}style={{ fontSize: '24px',fontFamily:'Roboto, sans-serif' }}></a>
-      </h3> */}
-        <div class='modelm'>         
+      </div>
+      </div><div class="container">
+			<div class="item-info-product">
+			<div class="info-product-price">
+			<div class="grid_meta">
+      <br></br>
+			<div class="product_price">
 
-        <h4 className=""style={{ fontSize: '16px',fontFamily:'Poppins, sans-serif' }}><font color="#09470b">Model No: {model_no}</font></h4>
-                    <h3 className=""style={{ fontSize: '15px',fontFamily:'Poppins, sans-serif' }}>Dimension: {description}</h3>
 
-        </div> 
-                  
-      <div className="separator"></div>	
-      </div>	
-		  <div class="grid-price mt-2">
-      <center>
-		  <span class="money ">{price} &nbsp;
-      </span></center>
-			</div>
+
+      <div class='modelm'>         
+      <h4 className=""style={{ fontSize: '16px',fontFamily:'Poppins, sans-serif' }}><font color="#09470b">Model No:{model_no}</font></h4>
+      <h3 className=""style={{ fontSize: '15px',fontFamily:'Poppins, sans-serif' }}>Dimension:{description}</h3>
+      </div> 
+
+        <div className="separator"></div>	
+        </div>	
+
+		     <div class="grid-price mt-2">
+         <center>
+		     <span class="money ">${price} &nbsp;
+         </span></center>
+			   </div>
+
       <p class="product-description text-center">        
       </p>
+      
 			</div>
 			</div>
-			</div></div></div> 
-        </>
-       );
-       };
+		  </div></div></div> 
+      </>
+      );
+      };
 
 export default ProductCard;
+
+
+

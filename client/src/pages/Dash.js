@@ -110,25 +110,24 @@ function Dash() {
                               <th>Username</th>
                               <th>Email</th>
                                  
-                          </tr>
-                         </thead>
-                         <tbody> <br></br>
-                          {record.slice(0, 5).map((output)=>
-                          <tr>
-                                 <td>{output.id}</td>
-                                 <td>{output.name}</td>
-                                 <td>{output.username}</td>
-                                 <td>{output.email}</td>
+                              </tr>
+                              </thead>
+                              <tbody> <br></br>
+                              {record.slice(0, 5).map((output)=>
+                               <tr>
+                                <td>{output.id}</td>
+                                <td>{output.name}</td>
+                                <td>{output.username}</td>
+                                <td>{output.email}</td>
                            
-                                 <td></td>
+                                <td></td>
                                 </tr>
                                  )}
                                 </tbody>
                                 </table>
                                 </div>
                                 </div>
-    <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
-
+                     <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
  </div>
     </div>
         

@@ -160,7 +160,7 @@ value={price} onChange={(e) => {setPrice(e.target.value)}}
 
       
 <div className="mb-3">
-<label htmlFor="password" className="form-label">
+<label htmlFor="text" className="form-label">
 Description
 </label>
 <input
@@ -171,17 +171,17 @@ name="text"
 value={description} onChange={(e) => {setDescription(e.target.value)}}
  /> 
 
-<div className="d-flex flex-row align-items-center mb-4">
-          <div className="form-outline flex-fill mb-0">
-            <input
-              type="file"
-              name="image"
-              onChange={handleImageChange}
-            />
-          </div>
-          <div className="ml-4">
+        <div className="d-flex flex-row align-items-center mb-4">
+        <div className="form-outline flex-fill mb-0">
+        <input
+        type="file"
+        name="image"
+        onChange={handleImageChange}
+        />
+        </div>
+        <div className="ml-4">
           
-            {image && (
+        {image && (
               <img src={`http://65.1.134.51:3001/uploads/${image}`} alt="Fetched" className="img-thumbnail"  style={{ width: '100px', height: '100px' }}/>
             )}
      
@@ -190,9 +190,8 @@ value={description} onChange={(e) => {setDescription(e.target.value)}}
             )}
           </div>
         </div>
-
-
-
+    
+    
 
 </div> 
 

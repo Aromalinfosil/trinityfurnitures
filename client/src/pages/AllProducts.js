@@ -9,6 +9,7 @@ import Services from '../components/common/Services';
 import filtersContext from '../contexts/filters/filtersContext';
 import EmptyView from '../components/common/EmptyView';
 import axios from 'axios';
+import { error } from 'jquery';
 
    const AllProducts = () => {
   useDocTitle('All Products');
@@ -42,6 +43,7 @@ import axios from 'axios';
     };
   }, []);
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
     // 
         axios.get('http://65.1.134.51:3001/product')
@@ -56,7 +58,6 @@ import axios from 'axios';
       });
       }, []);
 
-
   return (
     <>
       <Header />
@@ -66,28 +67,29 @@ import axios from 'axios';
       <br />
       <section id="all_products" className="allp">
         
-        <div ref={filterBarRef}>
-          <FilterBar fixed={isFilterBarFixed} />
-        </div>
+      <div ref={filterBarRef}>
+      <FilterBar fixed={isFilterBarFixed} />
+      </div>
 
-        <div className="container">
-          {allProducts.length ? (
-            <div className="wrapper products_wrapper">
-               {products.map(product => (
-                <ProductCard
-                key={product.id} // Make sure to include a key for each mapped element
-                product={product}
-                id={product.id}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-                description={product.description}
-                model_no={product.model_no} // Pass the product data to the ProductCard component
-                  />
+      <div className="container">
+      {allProducts.length ? (
+       <div className="wrapper products_wrapper">
+      {products.map(product => (
 
-                  ))}
-                   </div>
-          ) : (
+      <ProductCard
+      key={product.id} // Make sure to include a key for each mapped element
+      product={product}
+      id={product.id}
+      image={product.image}
+      name={product.name}
+      price={product.price}
+      description={product.description}
+      model_no={product.model_no} // Pass the product data to the ProductCard component
+      />
+
+      ))}
+      </div>
+      ) : (
             <EmptyView icon={<BsExclamationCircle />} msg="No Results Found" />
 
             

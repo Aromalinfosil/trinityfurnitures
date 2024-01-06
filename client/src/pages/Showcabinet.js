@@ -78,11 +78,9 @@ const Showcabinet = () => {
 </div>
 
 
-
-
-    <section id="featured" className="section">
-    <div class="a21"><center>New Arrivals...
-    </center></div><br></br>
+     <section id="featured" className="section">
+     <div class="a21"><center>New Arrivals...
+     </center></div><br></br>
                    
     <RelatedSlider category="Show Cabinet" />
     <div class="a21"><center>Show Cabinet<hr/>

@@ -17,6 +17,7 @@ import RelatedSlider from '../components/sliders/RelatedSlider';
 import axios from 'axios';
 import useDocTitle from '../hooks/useDocTitle';
 import RelatedProduct from '../components/sliders/RelatedProduct';
+import { error } from 'jquery';
 const Bar = () => {
 
     useDocTitle('Product Details');
@@ -59,27 +60,19 @@ const Bar = () => {
       setModel_no(response.data.model_no)
       }) 
 
-      .catch((error) => {
-      console.error('Error fetching product:', error);
-      console.log("Product not found");
-          });
-      }
+      
+    .catch((error) => {
+    console.error('Error fetching product:', error);
+    console.log("Product not found");
+    });
+    }
 
-
-    return (
-        
-      <main> <Header /><br/><br/><br/><br></br><br></br>
-     
-			
-
-
-      <hr/>
-      <center>
-      <h1 class="heading"><font color="#1b4106">Bar Cabinet </font></h1></center>
-      <hr/>
-
-
-
+    return ( 
+    <main> <Header /><br/><br/><br/><br></br><br></br>
+    <hr/>
+    <center>
+    <h1 class="heading"><font color="#1b4106">Bar Cabinet </font></h1></center>
+    <hr/>
 
     <section id="featured" className="section">
     <div class="a21"><center>New Arrivals...
@@ -91,7 +84,15 @@ const Bar = () => {
     <RelatedProduct category="Bar Cabinet" />  
     </section>
     </main>
+
+ 
     );
-    };
+    }; 
 
 export default Bar;
+
+
+
+
+
+{/* Bar Cabinet */}

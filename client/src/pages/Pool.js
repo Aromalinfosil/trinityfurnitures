@@ -75,8 +75,12 @@ const Pool = () => {
 
      <br></br>
      <div class="image-container">
-  <img src="../ass/images/pool90.png" alt="Your Image" class="responsive-image"/>
-</div>
+    <img src="../ass/images/pool90.png" alt="Your Image" class="responsive-image"/>
+    </div>
+
+
+
+
 
 
 

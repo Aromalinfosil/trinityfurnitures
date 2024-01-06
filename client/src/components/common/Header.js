@@ -15,9 +15,7 @@ import Cookies from 'js-cookie';
 import $ from 'jquery';
 
    
-
-
-const Header = () => {
+    const Header = () => {
 	const UId = Cookies.get('useid');
     const { formUserInfo, toggleForm, toggleSearch } = useContext(commonContext);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -291,13 +289,12 @@ const Header = () => {
 							    aria-expanded="false" >
 						
 						<Link to="/Door">	<font color="#000"> Doors</font></Link>	
-							</a>
-							<ul class="dropdown-menu mega-menu ">
-								<li>
+						</a>
+						<ul class="dropdown-menu mega-menu ">
+							<li>
 									<div class="row">
 										<div class="col-md-4 media-list span4 ">
-										
-											
+																				
 											<ul>
 									
 								<li class="media-mini mt-3">
@@ -319,18 +316,7 @@ const Header = () => {
 						</li>
 						
 						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+	
 						
 						
 					<li class="nav-item dropdown">

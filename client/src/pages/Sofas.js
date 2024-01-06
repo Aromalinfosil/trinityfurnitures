@@ -95,6 +95,8 @@ const Sofas = () => {
 </center></div><br></br><br></br>
 <RelatedProduct category="Sofa" />  
             </section>
+
+      
         </main>
     );
 };
